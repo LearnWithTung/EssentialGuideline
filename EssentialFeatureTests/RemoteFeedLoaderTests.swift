@@ -89,33 +89,15 @@ class RemoteFeedLoaderTests: XCTestCase {
     
     func test_load_deliversFeedItemsOnValidItemJSON(){
         let (sut, client) = makeSUT(url: anyURL())
-        let exp = expectation(description: "wait for completion")
         
         let item1 = item(id: 1, email: "email", firstname: "firstname", lastname: "lastname", url: "https://url.com")
-
-        var capturedItems: [FeedItem]?
-        sut.load { (result) in
-            switch result {
-            case let .sucess(items):
-                capturedItems = items
-            default:
-                break
-            }
-            exp.fulfill()
-        }
-
-        let json = self.itemJSON(with: [item1.dict])
         
-        let itemData = try! JSONSerialization.data(withJSONObject: json)
-        client.complete(withStatusCode: 200, data: itemData)
-
-        wait(for: [exp], timeout: 1.0)
-        XCTAssertEqual(capturedItems, [item1.model])
-        XCTAssertEqual(capturedItems?.first?.id, item1.model.id)
-        XCTAssertEqual(capturedItems?.first?.email, item1.model.email)
-        XCTAssertEqual(capturedItems?.first?.firstName, item1.model.firstName)
-        XCTAssertEqual(capturedItems?.first?.lastName, item1.model.lastName)
-        XCTAssertEqual(capturedItems?.first?.url, item1.model.url)
+        expect(sut, toCompleteWithFeed: [item1.model]) {
+            let json = self.itemJSON(with: [item1.dict])
+            
+            let itemData = try! JSONSerialization.data(withJSONObject: json)
+            client.complete(withStatusCode: 200, data: itemData)
+        }
     }
     
     // MARK: - Helpers
@@ -157,6 +139,24 @@ class RemoteFeedLoaderTests: XCTestCase {
                 XCTAssertEqual(expectedError, error, file: file, line: line)
             default:
                 XCTFail("Expected \(expectedError) got \(result) instead", file: file, line: line)
+            }
+            exp.fulfill()
+        }
+        
+        action()
+        
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func expect(_ sut: RemoteFeedLoader, toCompleteWithFeed expectedFeed: [FeedItem], when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        let exp = expectation(description: "Wait for completion")
+        
+        sut.load() { result in
+            switch result {
+            case let .sucess(feed):
+                XCTAssertEqual(expectedFeed, feed, file: file, line: line)
+            default:
+                XCTFail("Expected load feed successfully got \(result) instead", file: file, line: line)
             }
             exp.fulfill()
         }
