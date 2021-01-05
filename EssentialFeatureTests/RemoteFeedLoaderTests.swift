@@ -35,14 +35,13 @@ class RemoteFeedLoader {
 class RemoteFeedLoaderTests: XCTestCase {
     
     func test_init_doesNotRequestDataFromURL(){
-        let url = URL(string: "https://any-url.com")!
-        let (_, client) = makeSUT(url: url)
+        let (_, client) = makeSUT(url: anyURL())
         
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
     func test_load_requestsDataFromURL(){
-        let url = URL(string: "https://any-url.com")!
+        let url = anyURL()
         let (sut, client) = makeSUT(url: url)
         
         sut.load()
@@ -51,7 +50,7 @@ class RemoteFeedLoaderTests: XCTestCase {
     }
     
     func test_loadTwice_requestsDataFromURLTwice() {
-        let url = URL(string: "https://any-url.com")!
+        let url = anyURL()
         let (sut, client) = makeSUT(url: url)
         
         sut.load()
@@ -61,8 +60,7 @@ class RemoteFeedLoaderTests: XCTestCase {
     }
     
     func test_load_deliversErrorOnConnectivityError() {
-        let url = URL(string: "https://any-url.com")!
-        let (sut, client) = makeSUT(url: url)
+        let (sut, client) = makeSUT(url: anyURL())
         let connectivityError = NSError(domain: "test", code: 0, userInfo: nil)
         
         var capturedError: RemoteFeedLoader.Error?
@@ -91,6 +89,10 @@ class RemoteFeedLoaderTests: XCTestCase {
             requestedURLs.append(url)
             messages.append(completion)
         }
+    }
+    
+    private func anyURL() -> URL {
+        return URL(string: "https://any-url.com")!
     }
     
 }
