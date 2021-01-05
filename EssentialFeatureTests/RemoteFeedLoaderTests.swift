@@ -90,15 +90,8 @@ class RemoteFeedLoaderTests: XCTestCase {
     func test_load_deliversFeedItemsOnValidItemJSON(){
         let (sut, client) = makeSUT(url: anyURL())
         let exp = expectation(description: "wait for completion")
-
-        let item = FeedItem(id: 1, email: "any email", firstName: "any first", lastName: "any last", url: "any url")
-        let itemDict: [String: Any] = [
-            "id" : item.id,
-            "email": item.email,
-            "first_name": item.firstName,
-            "last_name": item.lastName,
-            "avatar": item.url
-        ]
+        
+        let item1 = item(id: 1, email: "email", firstname: "firstname", lastname: "lastname", url: "https://url.com")
 
         var capturedItems: [FeedItem]?
         sut.load { (result) in
@@ -111,20 +104,18 @@ class RemoteFeedLoaderTests: XCTestCase {
             exp.fulfill()
         }
 
-        let itemJSON = [
-            "data" : [itemDict]
-        ]
+        let json = self.itemJSON(with: [item1.dict])
         
-        let itemData = try! JSONSerialization.data(withJSONObject: itemJSON)
+        let itemData = try! JSONSerialization.data(withJSONObject: json)
         client.complete(withStatusCode: 200, data: itemData)
 
         wait(for: [exp], timeout: 1.0)
-        XCTAssertEqual(capturedItems, [item])
-        XCTAssertEqual(capturedItems?.first?.id, item.id)
-        XCTAssertEqual(capturedItems?.first?.email, item.email)
-        XCTAssertEqual(capturedItems?.first?.firstName, item.firstName)
-        XCTAssertEqual(capturedItems?.first?.lastName, item.lastName)
-        XCTAssertEqual(capturedItems?.first?.url, item.url)
+        XCTAssertEqual(capturedItems, [item1.model])
+        XCTAssertEqual(capturedItems?.first?.id, item1.model.id)
+        XCTAssertEqual(capturedItems?.first?.email, item1.model.email)
+        XCTAssertEqual(capturedItems?.first?.firstName, item1.model.firstName)
+        XCTAssertEqual(capturedItems?.first?.lastName, item1.model.lastName)
+        XCTAssertEqual(capturedItems?.first?.url, item1.model.url)
     }
     
     // MARK: - Helpers
@@ -133,6 +124,28 @@ class RemoteFeedLoaderTests: XCTestCase {
         let sut = RemoteFeedLoader(url: url, client: client)
 
         return (sut, client)
+    }
+    
+    private func item(id: Int, email: String, firstname: String, lastname: String, url: String) -> (model: FeedItem, dict: [String: Any]) {
+        let item = FeedItem(id: id, email: email, firstName: firstname, lastName: lastname, url: url)
+        
+        let itemDict: [String: Any] = [
+            "id" : item.id,
+            "email": item.email,
+            "first_name": item.firstName,
+            "last_name": item.lastName,
+            "avatar": item.url
+        ]
+        
+        return (item, itemDict)
+    }
+    
+    private func itemJSON(with items: [[String: Any]]) -> [String: Any]{
+        let itemJSON = [
+            "data" : items
+        ]
+        
+        return itemJSON
     }
     
     private func expect(_ sut: RemoteFeedLoader, toCompleteWithError expectedError: RemoteFeedLoader.Error, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
