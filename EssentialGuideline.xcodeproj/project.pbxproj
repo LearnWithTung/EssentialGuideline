@@ -15,6 +15,8 @@
 		BD76FBEB25A4C2AF00EA8578 /* RemoteFeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FBEA25A4C2AF00EA8578 /* RemoteFeedItemsMapper.swift */; };
 		BD76FBFC25A4C55F00EA8578 /* EssentialGuidelineiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD76FBF325A4C55E00EA8578 /* EssentialGuidelineiOS.framework */; };
 		BD76FC1325A4C5DC00EA8578 /* FeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FC1225A4C5DC00EA8578 /* FeedViewControllerTests.swift */; };
+		BD76FC4A25A4CCD500EA8578 /* EssentialFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD76FB7925A43F4900EA8578 /* EssentialFeature.framework */; };
+		BD76FC4B25A4CCD500EA8578 /* EssentialFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD76FB7925A43F4900EA8578 /* EssentialFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +34,28 @@
 			remoteGlobalIDString = BD76FBF225A4C55E00EA8578;
 			remoteInfo = EssentialGuidelineiOS;
 		};
+		BD76FC4C25A4CCD500EA8578 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD76FB6E25A43F2C00EA8578 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BD76FB7825A43F4900EA8578;
+			remoteInfo = EssentialFeature;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BD76FC4E25A4CCD500EA8578 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BD76FC4B25A4CCD500EA8578 /* EssentialFeature.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		BD76FB7925A43F4900EA8578 /* EssentialFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD76FC4A25A4CCD500EA8578 /* EssentialFeature.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +117,7 @@
 				BD76FBF425A4C55E00EA8578 /* EssentialGuidelineiOS */,
 				BD76FBFF25A4C55F00EA8578 /* EssentialGuidelineiOSTests */,
 				BD76FB7A25A43F4900EA8578 /* Products */,
+				BD76FC1825A4CA4B00EA8578 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +186,13 @@
 			path = EssentialGuidelineiOSTests;
 			sourceTree = "<group>";
 		};
+		BD76FC1825A4CA4B00EA8578 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -225,10 +257,12 @@
 				BD76FBEF25A4C55E00EA8578 /* Sources */,
 				BD76FBF025A4C55E00EA8578 /* Frameworks */,
 				BD76FBF125A4C55E00EA8578 /* Resources */,
+				BD76FC4E25A4CCD500EA8578 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BD76FC4D25A4CCD500EA8578 /* PBXTargetDependency */,
 			);
 			name = EssentialGuidelineiOS;
 			productName = EssentialGuidelineiOS;
@@ -379,18 +413,25 @@
 			target = BD76FBF225A4C55E00EA8578 /* EssentialGuidelineiOS */;
 			targetProxy = BD76FBFD25A4C55F00EA8578 /* PBXContainerItemProxy */;
 		};
+		BD76FC4D25A4CCD500EA8578 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BD76FB7825A43F4900EA8578 /* EssentialFeature */;
+			targetProxy = BD76FC4C25A4CCD500EA8578 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		BD76FB7225A43F2C00EA8578 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 			};
 			name = Debug;
 		};
 		BD76FB7325A43F2C00EA8578 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 			};
 			name = Release;
 		};
@@ -467,6 +508,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -541,6 +583,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -616,6 +659,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tung.vd.EssentialFeatureTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -682,6 +726,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tung.vd.EssentialFeatureTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -760,6 +805,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -834,6 +880,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -880,6 +927,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 2J95SR9C7R;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -952,6 +1000,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2J95SR9C7R;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

@@ -7,6 +7,7 @@
 
 import XCTest
 import UIKit
+import EssentialFeature
 
 final class FeedViewController: UIViewController {
     
