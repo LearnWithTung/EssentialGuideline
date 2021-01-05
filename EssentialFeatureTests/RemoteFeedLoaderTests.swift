@@ -79,9 +79,11 @@ class RemoteFeedLoaderTests: XCTestCase {
         let (sut, client) = makeSUT(url: anyURL())
         
         let item1 = item(id: 1, email: "email", firstname: "firstname", lastname: "lastname", url: "https://url.com")
-        
-        expect(sut, toCompleteWithFeed: [item1.model]) {
-            let json = self.itemJSON(with: [item1.dict])
+        let item2 = item(id: 2, email: "another email", firstname: "another firstname", lastname: "another lastname", url: "https://another-url.com")
+        let item3 = item(id: 3, email: "another another email", firstname: "another another firstname", lastname: "another another lastname", url: "https://another-another-url.com")
+
+        expect(sut, toCompleteWithFeed: [item1.model, item2.model, item3.model]) {
+            let json = self.itemJSON(with: [item1.dict, item2.dict, item3.dict])
             
             let itemData = try! JSONSerialization.data(withJSONObject: json)
             client.complete(withStatusCode: 200, data: itemData)
