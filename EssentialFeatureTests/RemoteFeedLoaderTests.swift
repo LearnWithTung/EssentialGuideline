@@ -120,6 +120,11 @@ class RemoteFeedLoaderTests: XCTestCase {
 
         wait(for: [exp], timeout: 1.0)
         XCTAssertEqual(capturedItems, [item])
+        XCTAssertEqual(capturedItems?.first?.id, item.id)
+        XCTAssertEqual(capturedItems?.first?.email, item.email)
+        XCTAssertEqual(capturedItems?.first?.firstName, item.firstName)
+        XCTAssertEqual(capturedItems?.first?.lastName, item.lastName)
+        XCTAssertEqual(capturedItems?.first?.url, item.url)
     }
     
     // MARK: - Helpers
