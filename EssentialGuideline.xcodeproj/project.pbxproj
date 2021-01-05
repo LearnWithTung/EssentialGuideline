@@ -12,6 +12,7 @@
 		BD76FBA325A44B9100EA8578 /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FBA225A44B9100EA8578 /* FeedLoader.swift */; };
 		BD76FBA725A44BE900EA8578 /* RemoteFeedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FBA625A44BE900EA8578 /* RemoteFeedLoaderTests.swift */; };
 		BD76FBE525A46D0000EA8578 /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FBE425A46D0000EA8578 /* RemoteFeedLoader.swift */; };
+		BD76FBEB25A4C2AF00EA8578 /* RemoteFeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FBEA25A4C2AF00EA8578 /* RemoteFeedItemsMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		BD76FBA225A44B9100EA8578 /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
 		BD76FBA625A44BE900EA8578 /* RemoteFeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoaderTests.swift; sourceTree = "<group>"; };
 		BD76FBE425A46D0000EA8578 /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
+		BD76FBEA25A4C2AF00EA8578 /* RemoteFeedItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedItemsMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				BD76FBE425A46D0000EA8578 /* RemoteFeedLoader.swift */,
+				BD76FBEA25A4C2AF00EA8578 /* RemoteFeedItemsMapper.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD76FBA325A44B9100EA8578 /* FeedLoader.swift in Sources */,
+				BD76FBEB25A4C2AF00EA8578 /* RemoteFeedItemsMapper.swift in Sources */,
 				BD76FBE525A46D0000EA8578 /* RemoteFeedLoader.swift in Sources */,
 				BD76FB9F25A4497E00EA8578 /* FeedItem.swift in Sources */,
 			);
