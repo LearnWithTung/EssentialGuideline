@@ -68,23 +68,11 @@ class RemoteFeedLoaderTests: XCTestCase {
     func test_load_deliversEmptyFeedOnEmptyItemJSON() {
         let (sut, client) = makeSUT(url: anyURL())
         
-        let exp = expectation(description: "wait for completion")
-        var capturedItems: [FeedItem]?
-        sut.load { result in
-            switch result {
-            case let .sucess(items):
-                capturedItems = items
-            default:
-                break
-            }
-            exp.fulfill()
+        expect(sut, toCompleteWithFeed: []) {
+            let emptyJSON = Data("{\"data\":[]}".utf8)
+            client.complete(withStatusCode: 200, data: emptyJSON)
+
         }
-        
-        let emptyJSON = Data("{\"data\":[]}".utf8)
-        client.complete(withStatusCode: 200, data: emptyJSON)
-        
-        wait(for: [exp], timeout: 1.0)
-        XCTAssertEqual(capturedItems, [])
     }
     
     func test_load_deliversFeedItemsOnValidItemJSON(){
