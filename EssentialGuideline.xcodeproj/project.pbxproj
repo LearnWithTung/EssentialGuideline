@@ -14,6 +14,7 @@
 		BD76FBE525A46D0000EA8578 /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FBE425A46D0000EA8578 /* RemoteFeedLoader.swift */; };
 		BD76FBEB25A4C2AF00EA8578 /* RemoteFeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FBEA25A4C2AF00EA8578 /* RemoteFeedItemsMapper.swift */; };
 		BD76FBFC25A4C55F00EA8578 /* EssentialGuidelineiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD76FBF325A4C55E00EA8578 /* EssentialGuidelineiOS.framework */; };
+		BD76FC1325A4C5DC00EA8578 /* FeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FC1225A4C5DC00EA8578 /* FeedViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		BD76FBF625A4C55E00EA8578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD76FBFB25A4C55F00EA8578 /* EssentialGuidelineiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialGuidelineiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD76FC0225A4C55F00EA8578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD76FC1225A4C5DC00EA8578 /* FeedViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				BD76FC0225A4C55F00EA8578 /* Info.plist */,
+				BD76FC1225A4C5DC00EA8578 /* FeedViewControllerTests.swift */,
 			);
 			path = EssentialGuidelineiOSTests;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 					};
 					BD76FBFA25A4C55F00EA8578 = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
 					};
 				};
 			};
@@ -358,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD76FC1325A4C5DC00EA8578 /* FeedViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
