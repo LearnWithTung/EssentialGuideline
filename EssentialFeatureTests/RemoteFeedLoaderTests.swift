@@ -12,12 +12,22 @@ class HTTPClient {
     static let shared = HTTPClient()
     
     var requestedURL: URL?
+    
+    func get(from url: URL) {
+        requestedURL = url
+    }
 }
 
 class RemoteFeedLoader {
     
+    private let url: URL
+    
+    init(url: URL = URL(string: "https://a-url.com")!) {
+        self.url = url
+    }
+    
     func load() {
-        HTTPClient.shared.requestedURL = URL(string: "https://a-url.com")
+        HTTPClient.shared.get(from: url)
     }
 }
 
@@ -31,12 +41,13 @@ class RemoteFeedLoaderTests: XCTestCase {
     }
     
     func test_load_requestsDataFromURL(){
+        let url = URL(string: "https://any-url.com")!
         let client = HTTPClient.shared
-        let sut = RemoteFeedLoader()
+        let sut = RemoteFeedLoader(url: url)
         
         sut.load()
         
-        XCTAssertNotNil(client.requestedURL)
+        XCTAssertEqual(client.requestedURL, url)
     }
     
 }
