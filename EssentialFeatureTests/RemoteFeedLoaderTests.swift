@@ -149,7 +149,7 @@ class RemoteFeedLoaderTests: XCTestCase {
         
         sut.load() { result in
             switch result {
-            case let .failure(error):
+            case let .failure(error as RemoteFeedLoader.Error):
                 XCTAssertEqual(expectedError, error, file: file, line: line)
             default:
                 XCTFail("Expected \(expectedError) got \(result) instead", file: file, line: line)
@@ -167,7 +167,7 @@ class RemoteFeedLoaderTests: XCTestCase {
         
         sut.load() { result in
             switch result {
-            case let .sucess(feed):
+            case let .success(feed):
                 XCTAssertEqual(expectedFeed, feed, file: file, line: line)
             default:
                 XCTFail("Expected load feed successfully got \(result) instead", file: file, line: line)

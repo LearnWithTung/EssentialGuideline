@@ -16,7 +16,7 @@ public protocol HTTPClient {
     func get(from url: URL, completion: @escaping (HTTPClientResult) -> Void)
 }
 
-public class RemoteFeedLoader {
+public class RemoteFeedLoader: FeedLoader {
     
     private let url: URL
     private let client: HTTPClient
@@ -26,10 +26,7 @@ public class RemoteFeedLoader {
         case invalidData
     }
     
-    public enum Result {
-        case sucess([FeedItem])
-        case failure(Error)
-    }
+    public typealias Result = Swift.Result<[FeedItem], Swift.Error>
     
     public init(url: URL, client: HTTPClient) {
         self.url = url
@@ -41,7 +38,7 @@ public class RemoteFeedLoader {
             guard self != nil else {return}
             switch result {
             case .failure:
-                completion(.failure(.connectivity))
+                completion(.failure(Error.connectivity))
             case let .success(data, response):
                 completion(RemoteFeedItemsMapper.map(data, response))
             }

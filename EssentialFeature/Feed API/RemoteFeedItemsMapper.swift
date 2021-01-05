@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 final class RemoteFeedItemsMapper {
     
     struct Root: Decodable {
@@ -30,9 +29,9 @@ final class RemoteFeedItemsMapper {
     
     static func map(_ data: Data, _ response: HTTPURLResponse) -> RemoteFeedLoader.Result {
         if response.statusCode == 200, let root = try? JSONDecoder().decode(Root.self, from: data) {
-            return .sucess(root.data.map{$0.model})
+            return .success(root.data.map{$0.model})
         } else {
-            return .failure(.invalidData)
+            return .failure(RemoteFeedLoader.Error.invalidData)
         }
     }
 }
