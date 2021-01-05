@@ -26,7 +26,7 @@ class RemoteFeedLoader {
     
     private let url: URL
     
-    init(url: URL = URL(string: "https://a-url.com")!) {
+    init(url: URL) {
         self.url = url
     }
     
@@ -38,9 +38,10 @@ class RemoteFeedLoader {
 class RemoteFeedLoaderTests: XCTestCase {
     
     func test_init_doesNotRequestDataFromURL(){
+        let url = URL(string: "https://any-url.com")!
         let client = HTTPClientSpy()
         HTTPClient.shared = client
-        let _ = RemoteFeedLoader()
+        let _ = RemoteFeedLoader(url: url)
         
         XCTAssertNil(client.requestedURL)
     }
