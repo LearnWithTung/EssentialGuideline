@@ -80,7 +80,7 @@ class RemoteFeedLoaderTests: XCTestCase {
             exp.fulfill()
         }
         
-        let emptyJSON = Data("{\"items\":[]}".utf8)
+        let emptyJSON = Data("{\"data\":[]}".utf8)
         client.complete(withStatusCode: 200, data: emptyJSON)
         
         wait(for: [exp], timeout: 1.0)
