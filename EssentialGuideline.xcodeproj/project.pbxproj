@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BD76FB8325A43F4900EA8578 /* EssentialFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD76FB7925A43F4900EA8578 /* EssentialFeature.framework */; };
+		BD76FB9F25A4497E00EA8578 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FB9E25A4497E00EA8578 /* FeedItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +26,7 @@
 		BD76FB7D25A43F4900EA8578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD76FB8225A43F4900EA8578 /* EssentialFeatureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeatureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD76FB8925A43F4900EA8578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD76FB9E25A4497E00EA8578 /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 		BD76FB7B25A43F4900EA8578 /* EssentialFeature */ = {
 			isa = PBXGroup;
 			children = (
+				BD76FB9725A4491D00EA8578 /* Feed Feature */,
 				BD76FB7D25A43F4900EA8578 /* Info.plist */,
 			);
 			path = EssentialFeature;
@@ -78,6 +81,14 @@
 				BD76FB8925A43F4900EA8578 /* Info.plist */,
 			);
 			path = EssentialFeatureTests;
+			sourceTree = "<group>";
+		};
+		BD76FB9725A4491D00EA8578 /* Feed Feature */ = {
+			isa = PBXGroup;
+			children = (
+				BD76FB9E25A4497E00EA8578 /* FeedItem.swift */,
+			);
+			path = "Feed Feature";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +151,7 @@
 				TargetAttributes = {
 					BD76FB7825A43F4900EA8578 = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
 					};
 					BD76FB8125A43F4900EA8578 = {
 						CreatedOnToolsVersion = 12.2;
@@ -187,6 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD76FB9F25A4497E00EA8578 /* FeedItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +391,7 @@
 		BD76FB8F25A43F4900EA8578 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -450,6 +464,7 @@
 		BD76FB9025A43F4900EA8578 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
