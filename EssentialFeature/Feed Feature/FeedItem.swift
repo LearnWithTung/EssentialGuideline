@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct FeedItem: Equatable, Decodable {
+public struct FeedItem: Equatable {
     public let id: Int
     public let email: String
     public let firstName: String
@@ -20,13 +20,5 @@ public struct FeedItem: Equatable, Decodable {
         self.firstName = firstName
         self.lastName = lastName
         self.url = url
-    }
-    
-    public enum CodingKeys: String, CodingKey {
-        case id
-        case email
-        case firstName = "first_name"
-        case lastName = "last_name"
-        case url = "avatar"
     }
 }
