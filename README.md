@@ -44,3 +44,24 @@ When the customer request to see their user feed
 Then the app should display an error message
 ```
 
+## Use Case Specs
+
+#### Load Feed From Remote Use Case
+
+```
+Data :
+* URL
+
+Primary course (happy path):
+- Execute `Load feed from remote` command with above data
+- Sytem download data from the URL
+- System validate downloaded data
+- System create feed item from validated data
+- System delivers list of feed item.
+
+No connectivity course (sad path):
+- System delivers error message.
+
+Invalid data course (sad path):
+- System delivers error message.
+```
