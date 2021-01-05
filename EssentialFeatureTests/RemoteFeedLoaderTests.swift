@@ -87,6 +87,41 @@ class RemoteFeedLoaderTests: XCTestCase {
         XCTAssertEqual(capturedItems, [])
     }
     
+    func test_load_deliversFeedItemsOnValidItemJSON(){
+        let (sut, client) = makeSUT(url: anyURL())
+        let exp = expectation(description: "wait for completion")
+
+        let item = FeedItem(id: 1, email: "any email", firstName: "any first", lastName: "any last", url: "any url")
+        let itemDict: [String: Any] = [
+            "id" : item.id,
+            "email": item.email,
+            "first_name": item.firstName,
+            "last_name": item.lastName,
+            "avatar": item.url
+        ]
+
+        var capturedItems: [FeedItem]?
+        sut.load { (result) in
+            switch result {
+            case let .sucess(items):
+                capturedItems = items
+            default:
+                break
+            }
+            exp.fulfill()
+        }
+
+        let itemJSON = [
+            "data" : [itemDict]
+        ]
+        
+        let itemData = try! JSONSerialization.data(withJSONObject: itemJSON)
+        client.complete(withStatusCode: 200, data: itemData)
+
+        wait(for: [exp], timeout: 1.0)
+        XCTAssertEqual(capturedItems, [item])
+    }
+    
     // MARK: - Helpers
     private func makeSUT(url: URL) -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()

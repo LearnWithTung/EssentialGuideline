@@ -7,10 +7,26 @@
 
 import Foundation
 
-public struct FeedItem: Equatable {
-    let id: Int
-    let email: String
-    let firstName: String
-    let lastName: String
-    let url: String
+public struct FeedItem: Equatable, Decodable {
+    public let id: Int
+    public let email: String
+    public let firstName: String
+    public let lastName: String
+    public let url: String
+    
+    public init(id: Int, email: String, firstName: String, lastName: String, url: String) {
+        self.id = id
+        self.email = email
+        self.firstName = firstName
+        self.lastName = lastName
+        self.url = url
+    }
+    
+    public enum CodingKeys: String, CodingKey {
+        case id
+        case email
+        case firstName = "first_name"
+        case lastName = "last_name"
+        case url = "avatar"
+    }
 }
