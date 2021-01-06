@@ -12,9 +12,9 @@ public struct FeedItem: Equatable {
     public let email: String
     public let firstName: String
     public let lastName: String
-    public let url: String
+    public let url: URL
     
-    public init(id: Int, email: String, firstName: String, lastName: String, url: String) {
+    public init(id: Int, email: String, firstName: String, lastName: String, url: URL) {
         self.id = id
         self.email = email
         self.firstName = firstName

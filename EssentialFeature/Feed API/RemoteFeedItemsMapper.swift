@@ -18,7 +18,7 @@ final class RemoteFeedItemsMapper {
         let email: String
         let first_name: String
         let last_name: String
-        let avatar: String
+        let avatar: URL
         
         var model: FeedItem {
             return FeedItem(id: id, email: email, firstName: first_name, lastName: last_name, url: avatar)

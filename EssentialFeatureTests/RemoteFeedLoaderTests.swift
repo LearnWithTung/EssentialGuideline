@@ -80,9 +80,9 @@ class RemoteFeedLoaderTests: XCTestCase {
     func test_load_deliversFeedItemsOnValidItemJSON(){
         let (sut, client) = makeSUT(url: anyURL())
         
-        let item1 = item(id: 1, email: "email", firstname: "firstname", lastname: "lastname", url: "https://url.com")
-        let item2 = item(id: 2, email: "another email", firstname: "another firstname", lastname: "another lastname", url: "https://another-url.com")
-        let item3 = item(id: 3, email: "another another email", firstname: "another another firstname", lastname: "another another lastname", url: "https://another-another-url.com")
+        let item1 = item(id: 1, email: "email", firstname: "firstname", lastname: "lastname", url: URL(string: "https://url.com")!)
+        let item2 = item(id: 2, email: "another email", firstname: "another firstname", lastname: "another lastname", url: URL(string: "https://another-url.com")!)
+        let item3 = item(id: 3, email: "another another email", firstname: "another another firstname", lastname: "another another lastname", url: URL(string: "https://another-another-url.com")!)
 
         expect(sut, toCompleteWithFeed: [item1.model, item2.model, item3.model]) {
             let json = self.itemJSON(with: [item1.dict, item2.dict, item3.dict])
@@ -122,7 +122,7 @@ class RemoteFeedLoaderTests: XCTestCase {
         }
     }
     
-    private func item(id: Int, email: String, firstname: String, lastname: String, url: String) -> (model: FeedItem, dict: [String: Any]) {
+    private func item(id: Int, email: String, firstname: String, lastname: String, url: URL) -> (model: FeedItem, dict: [String: Any]) {
         let item = FeedItem(id: id, email: email, firstName: firstname, lastName: lastname, url: url)
         
         let itemDict: [String: Any] = [
@@ -130,7 +130,7 @@ class RemoteFeedLoaderTests: XCTestCase {
             "email": item.email,
             "first_name": item.firstName,
             "last_name": item.lastName,
-            "avatar": item.url
+            "avatar": item.url.absoluteString
         ]
         
         return (item, itemDict)

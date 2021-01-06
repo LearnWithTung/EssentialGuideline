@@ -45,8 +45,8 @@ class FeedViewControllerTests: XCTestCase {
     
     func test_loadFeedCompletion_rendersSuccessfullyLoadedFeed() {
         let user0 = makeItem(id: 1)
-        let user1 = makeItem(id: 2, email: "another email", firstname: "another firstname", lastname: "another lastname", url: "https://another-url.com")
-        let user2 = makeItem(id: 3, email: "a another email", firstname: "a another firstname", lastname: "a another lastname", url: "https://a-another-url.com")
+        let user1 = makeItem(id: 2, email: "another email", firstname: "another firstname", lastname: "another lastname", url: URL(string: "https://another-url.com")!)
+        let user2 = makeItem(id: 3, email: "a another email", firstname: "a another firstname", lastname: "a another lastname", url: URL(string:"https://a-another-url.com")!)
         let (sut, loader) = makeSUT()
 
         sut.loadViewIfNeeded()
@@ -81,7 +81,7 @@ class FeedViewControllerTests: XCTestCase {
         return (sut, loader)
     }
     
-    private func makeItem(id: Int, email: String = "any", firstname: String = "any", lastname: String = "any", url: String = "https://any-url.com") -> FeedItem {
+    private func makeItem(id: Int, email: String = "any", firstname: String = "any", lastname: String = "any", url: URL = URL(string: "https://any-url.com")!) -> FeedItem {
         return FeedItem(id: id, email: email, firstName: firstname, lastName: lastname, url: url)
     }
 
@@ -118,6 +118,10 @@ class FeedViewControllerTests: XCTestCase {
             return messages.count
         }
         
+        var loadedUserURLs: [URL] {
+            return []
+        }
+        
         func load(completion: @escaping (Result<[FeedItem], Error>) -> Void) {
             messages.append(completion)
         }
@@ -141,6 +145,10 @@ private extension FeedViewController {
     
     var isShowingLoadingIndicator: Bool {
         return refreshControl?.isRefreshing == true
+    }
+    
+    func simulateFeedUserViewVisisble(at index: Int) {
+        _ = feedUserView(at: index)
     }
     
     func numberOfRenderedFeedUserViews() -> Int {
