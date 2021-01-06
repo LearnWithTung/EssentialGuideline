@@ -15,16 +15,16 @@ class FeedViewControllerTests: XCTestCase {
     func test_loadFeedActions_requestFeedFromLoader() {
         let (sut, loader) = makeSUT()
         
-        XCTAssertEqual(loader.requestCallCount, 0, "Expected no loading requets before view is loaded")
+        XCTAssertEqual(loader.loadFeedCallCount, 0, "Expected no loading requets before view is loaded")
         
         sut.loadViewIfNeeded()
-        XCTAssertEqual(loader.requestCallCount, 1, "Expected a loading request once view is loaded")
+        XCTAssertEqual(loader.loadFeedCallCount, 1, "Expected a loading request once view is loaded")
         
         sut.simulateUserInitiatedFeedReload()
-        XCTAssertEqual(loader.requestCallCount, 2, "Expected another loading request once user initiates a load")
+        XCTAssertEqual(loader.loadFeedCallCount, 2, "Expected another loading request once user initiates a load")
         
         sut.simulateUserInitiatedFeedReload()
-        XCTAssertEqual(loader.requestCallCount, 3, "Expected a third loading request once user intiates another load")
+        XCTAssertEqual(loader.loadFeedCallCount, 3, "Expected a third loading request once user intiates another load")
     }
     
     func test_loadingFeedIndicator_isVisibleWhileLoadingFeed() {
@@ -72,10 +72,27 @@ class FeedViewControllerTests: XCTestCase {
         assertThat(sut, hasRendering: [user0])
     }
     
+    func test_feedImageView_loadsImageURLWhenVisible() {
+        let user0 = makeItem(id: 1, url: URL(string: "https://url-0.com")!)
+        let user1 = makeItem(id: 1, url: URL(string: "https://url-1.com")!)
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading(with: [user0, user1])
+        
+        XCTAssertEqual(loader.loadedUserURLs, [], "Expected no image URL requested until view become visible")
+        
+        sut.simulateFeedUserViewVisisble(at: 0)
+        XCTAssertEqual(loader.loadedUserURLs, [user0.url], "Expected first image URL request once first view becomes visible")
+
+        sut.simulateFeedUserViewVisisble(at: 1)
+        XCTAssertEqual(loader.loadedUserURLs, [user0.url, user1.url], "Expected second image URL request once second view becomes visible")
+    }
+    
     // MARK: - Helpers
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
         let loader = LoaderSpy()
-        let sut = FeedViewController(loader: loader)
+        let sut = FeedViewController(feedLoader: loader, imageLoader: loader)
         trackForMemoryLeaks(loader)
         trackForMemoryLeaks(sut)
         return (sut, loader)
@@ -112,27 +129,33 @@ class FeedViewControllerTests: XCTestCase {
         }
     }
     
-    class LoaderSpy: FeedLoader {
-        private var messages = [(Result<[FeedItem], Error>) -> Void]()
-        var requestCallCount: Int {
-            return messages.count
-        }
+    class LoaderSpy: FeedLoader, FeedImageDataLoader {
+        // MARK: - FeedLoader
         
-        var loadedUserURLs: [URL] {
-            return []
+        private var feedMessages = [(Result<[FeedItem], Error>) -> Void]()
+        var loadFeedCallCount: Int {
+            return feedMessages.count
         }
-        
+                
         func load(completion: @escaping (Result<[FeedItem], Error>) -> Void) {
-            messages.append(completion)
+            feedMessages.append(completion)
         }
         
         func completeFeedLoading(with feed: [FeedItem] = [], at index: Int = 0) {
-            messages[index](.success(feed))
+            feedMessages[index](.success(feed))
         }
         
         func completeFeedLoadingWithError(at index: Int = 0) {
             let error = NSError(domain: "test", code: 0, userInfo: nil)
-            messages[index](.failure(error))
+            feedMessages[index](.failure(error))
+        }
+        
+        // MARK: - FeedImageDataLoader
+        
+        var loadedUserURLs: [URL] = []
+        
+        func loadImageData(from url: URL) {
+            loadedUserURLs.append(url)
         }
     }
     
