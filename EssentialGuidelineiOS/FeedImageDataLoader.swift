@@ -19,11 +19,11 @@ public class FeedImageDataLoaderWithSDWebImage : FeedImageDataLoader{
     
     public func loadImageData(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
         let manger = SDWebImageManager()
-        manger.loadImage(with: url, options: .continueInBackground, progress: nil) { (_, data, error, _, _, _) in
+        manger.loadImage(with: url, options: .continueInBackground, progress: nil) { (image, _, error, _, _, _) in
             if let error = error {
                 completion(.failure(error))
             } else {
-                completion(.success(data!))
+                completion(.success(image?.pngData() ?? Data()))
             }
         }
     }
