@@ -20,6 +20,7 @@
 		BD76FC5325A4CF1400EA8578 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FC5225A4CF1400EA8578 /* HTTPClient.swift */; };
 		BD76FC5825A54CA800EA8578 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FC5725A54CA800EA8578 /* FeedViewController.swift */; };
 		BD76FC5D25A5509E00EA8578 /* FeedUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FC5C25A5509E00EA8578 /* FeedUserCell.swift */; };
+		BD76FC6225A55ECA00EA8578 /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FC6125A55ECA00EA8578 /* FeedImageDataLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		BD76FC5225A4CF1400EA8578 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		BD76FC5725A54CA800EA8578 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		BD76FC5C25A5509E00EA8578 /* FeedUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUserCell.swift; sourceTree = "<group>"; };
+		BD76FC6125A55ECA00EA8578 /* FeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				BD76FBF625A4C55E00EA8578 /* Info.plist */,
 				BD76FC5725A54CA800EA8578 /* FeedViewController.swift */,
 				BD76FC5C25A5509E00EA8578 /* FeedUserCell.swift */,
+				BD76FC6125A55ECA00EA8578 /* FeedImageDataLoader.swift */,
 			);
 			path = EssentialGuidelineiOS;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD76FC6225A55ECA00EA8578 /* FeedImageDataLoader.swift in Sources */,
 				BD76FC5D25A5509E00EA8578 /* FeedUserCell.swift in Sources */,
 				BD76FC5825A54CA800EA8578 /* FeedViewController.swift in Sources */,
 			);

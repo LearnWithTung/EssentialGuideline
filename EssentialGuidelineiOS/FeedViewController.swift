@@ -8,10 +8,6 @@
 import UIKit
 import EssentialFeature
 
-public protocol FeedImageDataLoader {
-    func loadImageData(from url: URL, completion: @escaping (Result<Data, Error>) -> Void)
-}
-
 final public class FeedViewController: UITableViewController {
     
     private var feedLoader: FeedLoader?
