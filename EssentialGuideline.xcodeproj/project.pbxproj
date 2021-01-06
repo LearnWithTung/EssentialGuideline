@@ -21,6 +21,7 @@
 		BD76FC5825A54CA800EA8578 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FC5725A54CA800EA8578 /* FeedViewController.swift */; };
 		BD76FC5D25A5509E00EA8578 /* FeedUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FC5C25A5509E00EA8578 /* FeedUserCell.swift */; };
 		BD76FC6225A55ECA00EA8578 /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FC6125A55ECA00EA8578 /* FeedImageDataLoader.swift */; };
+		BD76FC6725A5613600EA8578 /* FeedUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FC6625A5613600EA8578 /* FeedUIComposer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		BD76FC5725A54CA800EA8578 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		BD76FC5C25A5509E00EA8578 /* FeedUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUserCell.swift; sourceTree = "<group>"; };
 		BD76FC6125A55ECA00EA8578 /* FeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoader.swift; sourceTree = "<group>"; };
+		BD76FC6625A5613600EA8578 /* FeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIComposer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 				BD76FC5725A54CA800EA8578 /* FeedViewController.swift */,
 				BD76FC5C25A5509E00EA8578 /* FeedUserCell.swift */,
 				BD76FC6125A55ECA00EA8578 /* FeedImageDataLoader.swift */,
+				BD76FC6625A5613600EA8578 /* FeedUIComposer.swift */,
 			);
 			path = EssentialGuidelineiOS;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD76FC6225A55ECA00EA8578 /* FeedImageDataLoader.swift in Sources */,
+				BD76FC6725A5613600EA8578 /* FeedUIComposer.swift in Sources */,
 				BD76FC5D25A5509E00EA8578 /* FeedUserCell.swift in Sources */,
 				BD76FC5825A54CA800EA8578 /* FeedViewController.swift in Sources */,
 			);
