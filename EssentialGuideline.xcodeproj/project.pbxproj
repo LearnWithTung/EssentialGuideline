@@ -18,6 +18,7 @@
 		BD76FC4A25A4CCD500EA8578 /* EssentialFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD76FB7925A43F4900EA8578 /* EssentialFeature.framework */; };
 		BD76FC4B25A4CCD500EA8578 /* EssentialFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD76FB7925A43F4900EA8578 /* EssentialFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BD76FC5325A4CF1400EA8578 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FC5225A4CF1400EA8578 /* HTTPClient.swift */; };
+		BD76FC5825A54CA800EA8578 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FC5725A54CA800EA8578 /* FeedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		BD76FC0225A4C55F00EA8578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD76FC1225A4C5DC00EA8578 /* FeedViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewControllerTests.swift; sourceTree = "<group>"; };
 		BD76FC5225A4CF1400EA8578 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		BD76FC5725A54CA800EA8578 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				BD76FBF625A4C55E00EA8578 /* Info.plist */,
+				BD76FC5725A54CA800EA8578 /* FeedViewController.swift */,
 			);
 			path = EssentialGuidelineiOS;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 					};
 					BD76FBF225A4C55E00EA8578 = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
 					};
 					BD76FBFA25A4C55F00EA8578 = {
 						CreatedOnToolsVersion = 12.2;
@@ -393,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD76FC5825A54CA800EA8578 /* FeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -898,6 +903,7 @@
 		BD76FC0825A4C55F00EA8578 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -971,6 +977,7 @@
 		BD76FC0925A4C55F00EA8578 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
