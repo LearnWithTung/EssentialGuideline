@@ -65,3 +65,50 @@ No connectivity course (sad path):
 Invalid data course (sad path):
 - System delivers error message.
 ```
+
+### Model Specs
+#### Feed Item
+
+| Property      | Type                     |
+|---------------|---------------------|
+| `id`               | `Int`                    |
+| `email`         | `String`              |
+| `firstName` | `String`              |
+| `lastName`   | `String`              |
+| `url`             | `URL`                    |
+
+### Payload contract
+```
+GET /users
+
+200 RESPONSE
+
+{
+    "data": [
+    {
+        "id": 1,
+        "email": "george.bluth@reqres.in",
+        "first_name": "George",
+        "last_name": "Bluth",
+        "avatar": "https://reqres.in/img/faces/1-image.jpg"
+    },
+    {
+        "id": 2,
+        "email": "janet.weaver@reqres.in",
+        "first_name": "Janet",
+        "last_name": "Weaver",
+        "avatar": "https://reqres.in/img/faces/2-image.jpg"
+    },
+    {
+        "id": 3,
+        "email": "emma.wong@reqres.in",
+        "first_name": "Emma",
+        "last_name": "Wong",
+        "avatar": "https://reqres.in/img/faces/3-image.jpg"
+    }
+        ...
+    ]
+}
+```
+
+---
