@@ -14,7 +14,13 @@ final public class FeedViewController: UITableViewController {
     private var imageLoader: FeedImageDataLoader?
     private var tableModel = [FeedItem]() {
         didSet {
-            tableView.reloadData()
+            if Thread.isMainThread {
+                self.tableView.reloadData()
+            } else {
+                DispatchQueue.main.async { [weak self] in
+                    self?.tableView.reloadData()
+                }
+            }
         }
     }
         
@@ -28,8 +34,14 @@ final public class FeedViewController: UITableViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.backgroundColor = .white
+        
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(load), for: .valueChanged)
+        
+        tableView.register(UINib(nibName: "FeedUserCell",
+                                 bundle: Bundle(for: FeedUserCell.self)),
+                           forCellReuseIdentifier: "FeedUserCell")
         load()
     }
     
@@ -39,7 +51,14 @@ final public class FeedViewController: UITableViewController {
             if let feed = try? result.get() {
                 self?.tableModel = feed
             }
-            self?.refreshControl?.endRefreshing()
+            
+            if Thread.isMainThread {
+                self?.refreshControl?.endRefreshing()
+            } else {
+                DispatchQueue.main.async {
+                    self?.refreshControl?.endRefreshing()
+                }
+            }
         }
     }
     
@@ -49,7 +68,7 @@ final public class FeedViewController: UITableViewController {
     
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellModel = tableModel[indexPath.row]
-        let cell = FeedUserCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FeedUserCell", for: indexPath) as! FeedUserCell
         cell.emailLabel.text = cellModel.email
         cell.firstNameLabel.text = cellModel.firstName
         cell.lastNameLabel.text = cellModel.lastName
