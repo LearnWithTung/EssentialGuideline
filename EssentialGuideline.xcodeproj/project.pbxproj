@@ -32,6 +32,7 @@
 		BD76FCA925A56AFB00EA8578 /* EssentialFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD76FB7925A43F4900EA8578 /* EssentialFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BD76FCAD25A56AFD00EA8578 /* EssentialGuidelineiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD76FBF325A4C55E00EA8578 /* EssentialGuidelineiOS.framework */; };
 		BD76FCAE25A56AFD00EA8578 /* EssentialGuidelineiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD76FBF325A4C55E00EA8578 /* EssentialGuidelineiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BD76FCB825A56BDB00EA8578 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FCB725A56BDB00EA8578 /* URLSessionHTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,7 @@
 		BD76FC9325A56A6E00EA8578 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD76FC9625A56A6E00EA8578 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD76FC9825A56A6E00EA8578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD76FCB725A56BDB00EA8578 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		ECCBDBD94A7C34169972FA8F /* Pods_EssentialGuidelineiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EssentialGuidelineiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -249,6 +251,7 @@
 				BD76FBE425A46D0000EA8578 /* RemoteFeedLoader.swift */,
 				BD76FBEA25A4C2AF00EA8578 /* RemoteFeedItemsMapper.swift */,
 				BD76FC5225A4CF1400EA8578 /* HTTPClient.swift */,
+				BD76FCB725A56BDB00EA8578 /* URLSessionHTTPClient.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				BD76FBEB25A4C2AF00EA8578 /* RemoteFeedItemsMapper.swift in Sources */,
 				BD76FBE525A46D0000EA8578 /* RemoteFeedLoader.swift in Sources */,
 				BD76FB9F25A4497E00EA8578 /* FeedItem.swift in Sources */,
+				BD76FCB825A56BDB00EA8578 /* URLSessionHTTPClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
