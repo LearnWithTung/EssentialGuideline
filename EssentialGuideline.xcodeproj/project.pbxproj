@@ -28,6 +28,10 @@
 		BD76FC8D25A56A6D00EA8578 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FC8C25A56A6D00EA8578 /* SceneDelegate.swift */; };
 		BD76FC9425A56A6E00EA8578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD76FC9325A56A6E00EA8578 /* Assets.xcassets */; };
 		BD76FC9725A56A6E00EA8578 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD76FC9525A56A6E00EA8578 /* LaunchScreen.storyboard */; };
+		BD76FCA825A56AFB00EA8578 /* EssentialFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD76FB7925A43F4900EA8578 /* EssentialFeature.framework */; };
+		BD76FCA925A56AFB00EA8578 /* EssentialFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD76FB7925A43F4900EA8578 /* EssentialFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BD76FCAD25A56AFD00EA8578 /* EssentialGuidelineiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD76FBF325A4C55E00EA8578 /* EssentialGuidelineiOS.framework */; };
+		BD76FCAE25A56AFD00EA8578 /* EssentialGuidelineiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD76FBF325A4C55E00EA8578 /* EssentialGuidelineiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,20 @@
 			remoteGlobalIDString = BD76FB7825A43F4900EA8578;
 			remoteInfo = EssentialFeature;
 		};
+		BD76FCAA25A56AFB00EA8578 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD76FB6E25A43F2C00EA8578 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BD76FB7825A43F4900EA8578;
+			remoteInfo = EssentialFeature;
+		};
+		BD76FCAF25A56AFD00EA8578 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD76FB6E25A43F2C00EA8578 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BD76FBF225A4C55E00EA8578;
+			remoteInfo = EssentialGuidelineiOS;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,6 +80,18 @@
 			dstSubfolderSpec = 10;
 			files = (
 				BD76FC4B25A4CCD500EA8578 /* EssentialFeature.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD76FCAC25A56AFB00EA8578 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BD76FCAE25A56AFD00EA8578 /* EssentialGuidelineiOS.framework in Embed Frameworks */,
+				BD76FCA925A56AFB00EA8578 /* EssentialFeature.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,6 +170,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD76FCAD25A56AFD00EA8578 /* EssentialGuidelineiOS.framework in Frameworks */,
+				BD76FCA825A56AFB00EA8578 /* EssentialFeature.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,10 +399,13 @@
 				BD76FC8425A56A6D00EA8578 /* Sources */,
 				BD76FC8525A56A6D00EA8578 /* Frameworks */,
 				BD76FC8625A56A6D00EA8578 /* Resources */,
+				BD76FCAC25A56AFB00EA8578 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BD76FCAB25A56AFB00EA8578 /* PBXTargetDependency */,
+				BD76FCB025A56AFD00EA8578 /* PBXTargetDependency */,
 			);
 			name = EssentialiOSApp;
 			productName = EssentialiOSApp;
@@ -599,6 +634,16 @@
 			isa = PBXTargetDependency;
 			target = BD76FB7825A43F4900EA8578 /* EssentialFeature */;
 			targetProxy = BD76FC4C25A4CCD500EA8578 /* PBXContainerItemProxy */;
+		};
+		BD76FCAB25A56AFB00EA8578 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BD76FB7825A43F4900EA8578 /* EssentialFeature */;
+			targetProxy = BD76FCAA25A56AFB00EA8578 /* PBXContainerItemProxy */;
+		};
+		BD76FCB025A56AFD00EA8578 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BD76FBF225A4C55E00EA8578 /* EssentialGuidelineiOS */;
+			targetProxy = BD76FCAF25A56AFD00EA8578 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
