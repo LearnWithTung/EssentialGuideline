@@ -72,7 +72,7 @@ class FeedViewControllerTests: XCTestCase {
         assertThat(sut, hasRendering: [user0])
     }
     
-    func test_feedImageView_loadsImageURLWhenVisible() {
+    func test_feedUserView_loadsImageURLWhenVisible() {
         let user0 = makeItem(id: 1, url: URL(string: "https://url-0.com")!)
         let user1 = makeItem(id: 1, url: URL(string: "https://url-1.com")!)
         let (sut, loader) = makeSUT()
@@ -87,6 +87,29 @@ class FeedViewControllerTests: XCTestCase {
 
         sut.simulateFeedUserViewVisisble(at: 1)
         XCTAssertEqual(loader.loadedUserURLs, [user0.url, user1.url], "Expected second image URL request once second view becomes visible")
+    }
+    
+    func test_feedUserView_rendersImageLoadedFromURL() {
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading(with: [makeItem(id: 1), makeItem(id: 2)])
+        
+        let view0 = sut.simulateFeedUserViewVisisble(at: 0)
+        let view1 = sut.simulateFeedUserViewVisisble(at: 1)
+        XCTAssertEqual(view0?.renderedImage, .none, "Expected no image for first view while loading first image")
+        XCTAssertEqual(view1?.renderedImage, .none, "Expected no image for second view while loading first image")
+        
+        let imageData0 = UIImage.make(with: .red)!.pngData()!
+        loader.completeImageLoading(with: imageData0, at: 0)
+        XCTAssertEqual(view0?.renderedImage, imageData0)
+        XCTAssertEqual(view1?.renderedImage, .none, "Expected no image for second view while loading first image")
+        
+        let imageData1 = UIImage.make(with: .blue)!.pngData()!
+        loader.completeImageLoading(with: imageData1, at: 1)
+        XCTAssertEqual(view0?.renderedImage, imageData0)
+        XCTAssertEqual(view1?.renderedImage, imageData1)
+
     }
     
     // MARK: - Helpers
@@ -153,9 +176,15 @@ class FeedViewControllerTests: XCTestCase {
         // MARK: - FeedImageDataLoader
         
         var loadedUserURLs: [URL] = []
+        var loadImageDataMessages = [(Result<Data, Error>) -> Void]()
         
-        func loadImageData(from url: URL) {
+        func loadImageData(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
             loadedUserURLs.append(url)
+            loadImageDataMessages.append(completion)
+        }
+        
+        func completeImageLoading(with data: Data, at index: Int = 0) {
+            loadImageDataMessages[index](.success(data))
         }
     }
     
@@ -170,8 +199,9 @@ private extension FeedViewController {
         return refreshControl?.isRefreshing == true
     }
     
-    func simulateFeedUserViewVisisble(at index: Int) {
-        _ = feedUserView(at: index)
+    @discardableResult
+    func simulateFeedUserViewVisisble(at index: Int) -> FeedUserCell? {
+        return feedUserView(at: index) as? FeedUserCell
     }
     
     func numberOfRenderedFeedUserViews() -> Int {
@@ -201,6 +231,10 @@ private extension FeedUserCell {
     var lastNameText: String? {
         return lastNameLabel.text
     }
+    
+    var renderedImage: Data? {
+        return userImageView.image?.pngData()
+    }
 }
 
 private extension UIRefreshControl {
@@ -213,4 +247,18 @@ private extension UIRefreshControl {
         }
     }
     
+}
+
+private extension UIImage {
+    static func make(with color: UIColor) -> UIImage? {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()!
+        context.setFillColor(color.cgColor)
+        context.fill(rect)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
 }

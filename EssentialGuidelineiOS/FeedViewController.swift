@@ -9,7 +9,7 @@ import UIKit
 import EssentialFeature
 
 public protocol FeedImageDataLoader {
-    func loadImageData(from url: URL)
+    func loadImageData(from url: URL, completion: @escaping (Result<Data, Error>) -> Void)
 }
 
 final public class FeedViewController: UITableViewController {
@@ -57,7 +57,11 @@ final public class FeedViewController: UITableViewController {
         cell.emailLabel.text = cellModel.email
         cell.firstNameLabel.text = cellModel.firstName
         cell.lastNameLabel.text = cellModel.lastName
-        imageLoader?.loadImageData(from: cellModel.url)
+        cell.userImageView.image = nil
+        imageLoader?.loadImageData(from: cellModel.url) { result in
+            let data = try? result.get()
+            cell.userImageView.image = data.map(UIImage.init) ?? nil
+        }
         return cell
     }
 }
