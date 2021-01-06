@@ -88,6 +88,11 @@ fastlane/test_output
 # Cocoapods
 Pods/
 
+# Xcode
+xcuserdata/
+project.xcworkspace/
+DerivedData/
+
 ### Xcode Patch ###
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
