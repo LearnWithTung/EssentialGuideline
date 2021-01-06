@@ -34,13 +34,13 @@ class FeedViewControllerTests: XCTestCase {
         XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicaotr once view is loaded")
         
         loader.completeFeedLoading(at: 0)
-        XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once loading is completed")
+        XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once loading is completed successfully")
         
         sut.simulateUserInitiatedFeedReload()
         XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once user initiates a reload")
         
-        loader.completeFeedLoading(at: 1)
-        XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading is completed")
+        loader.completeFeedLoadingWithError(at: 1)
+        XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading is completed with error")
     }
     
     func test_loadFeedCompletion_rendersSuccessfullyLoadedFeed() {
@@ -58,6 +58,18 @@ class FeedViewControllerTests: XCTestCase {
         sut.simulateUserInitiatedFeedReload()
         loader.completeFeedLoading(with: [user0, user1, user2], at: 1)
         assertThat(sut, hasRendering: [user0, user1, user2])
+    }
+    
+    func test_loadFeedCompletion_doesNotAlterCurrentRenderingStateOnError() {
+        let user0 = makeItem(id: 1)
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading(with: [user0], at: 0)
+
+        sut.simulateUserInitiatedFeedReload()
+        loader.completeFeedLoadingWithError(at: 1)
+        assertThat(sut, hasRendering: [user0])
     }
     
     // MARK: - Helpers
@@ -81,17 +93,22 @@ class FeedViewControllerTests: XCTestCase {
     }
     
     private func assertThat(_ sut: FeedViewController, hasViewConfiguredFor user: FeedItem, at index: Int, file: StaticString = #filePath, line: UInt = #line) {
-        let view = sut.feedUserView(at: index) as? FeedUserCell
-        XCTAssertNotNil(view, file: file, line: line)
-        XCTAssertEqual(view?.emailText, user.email, file: file, line: line)
-        XCTAssertEqual(view?.firstNameText, user.firstName, file: file, line: line)
-        XCTAssertEqual(view?.lastNameText, user.lastName, file: file, line: line)
+        let view = sut.feedUserView(at: index)
+        guard let cell = view as? FeedUserCell else {
+            return XCTFail("Expected \(FeedUserCell.self) instance")
+        }
+        
+        XCTAssertEqual(cell.emailText, user.email, file: file, line: line)
+        XCTAssertEqual(cell.firstNameText, user.firstName, file: file, line: line)
+        XCTAssertEqual(cell.lastNameText, user.lastName, file: file, line: line)
     }
     
-    private func assertThat(_ sut: FeedViewController, hasRendering users: [FeedItem]) {
-        XCTAssertEqual(sut.numberOfRenderedFeedUserViews(), users.count)
+    private func assertThat(_ sut: FeedViewController, hasRendering users: [FeedItem], file: StaticString = #filePath, line: UInt = #line) {
+        guard sut.numberOfRenderedFeedUserViews() == users.count else {
+            return XCTFail("Expected \(users.count) users, got \(sut.numberOfRenderedFeedUserViews()) instead", file: file, line: line)
+        }
         users.enumerated().forEach { index, user in
-            assertThat(sut, hasViewConfiguredFor: user, at: index)
+            assertThat(sut, hasViewConfiguredFor: user, at: index, file: file, line: line)
         }
     }
     
@@ -107,6 +124,11 @@ class FeedViewControllerTests: XCTestCase {
         
         func completeFeedLoading(with feed: [FeedItem] = [], at index: Int = 0) {
             messages[index](.success(feed))
+        }
+        
+        func completeFeedLoadingWithError(at index: Int = 0) {
+            let error = NSError(domain: "test", code: 0, userInfo: nil)
+            messages[index](.failure(error))
         }
     }
     
