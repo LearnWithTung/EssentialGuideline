@@ -7,13 +7,18 @@
 
 import UIKit
 import EssentialFeature
+import MVC
 import EssentialGuidelineiOS
 import SDWebImage
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
+    let url = URL(string: "https://reqres.in/api/users")!
+    let client = URLSessionHTTPClient(session: .shared)
+    lazy var feedLoader = RemoteFeedLoader(url: url, client: client)
+    let feedImageLoader = FeedImageDataLoaderWithSDWebImage()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -22,12 +27,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
-        
-        let url = URL(string: "https://reqres.in/api/users")!
-        let client = URLSessionHTTPClient(session: .shared)
-        let feedLoader = RemoteFeedLoader(url: url, client: client)
-        let feedImageLoader = FeedImageDataLoaderWithSDWebImage()
-        window?.rootViewController = FeedViewController(feedLoader: feedLoader, imageLoader: feedImageLoader)
+        window?.rootViewController = makeRootViewController()
+    }
+    
+    private func makeRootViewController() -> UIViewController {
+        let tabBar = UITabBarController()
+        tabBar.viewControllers = [massive(), mvc()]
+        return tabBar
+    }
+    
+    private func massive() -> UIViewController {
+        let view = EssentialGuidelineiOS.FeedUIComposer.composeWith(feedLoader: feedLoader, imageLoader: feedImageLoader)
+        view.tabBarItem.title = "Massive"
+        return view
+    }
+    
+    private func mvc() -> UIViewController {
+        let view = MVC.FeedUIComposer.composeWith(feedLoader: feedLoader, imageLoader: feedImageLoader)
+        view.tabBarItem.title = "MVC"
+        return view
     }
 
 }
