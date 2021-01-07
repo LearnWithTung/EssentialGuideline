@@ -7,30 +7,30 @@
 
 import UIKit
 
-class FeedCellController {
+protocol FeedCellControllerDelegate {
+    func didStartLoadingCell()
+}
+
+class FeedCellController: ImageCellView {
     
-    private let viewModel: FeedCellViewModel<UIImage>
-    private var cell: UITableViewCell?
+    private let delegate: FeedCellControllerDelegate
+    private var cell: FeedUserCell?
     
-    init(viewModel: FeedCellViewModel<UIImage>) {
-        self.viewModel = viewModel
+    init(delegate: FeedCellControllerDelegate) {
+        self.delegate = delegate
     }
     
     func view(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
-        cell = binded(tableView.dequeueReusableCell(withIdentifier: "FeedUserCell", for: indexPath) as! FeedUserCell)
-        viewModel.loadImageData()
+        cell = (tableView.dequeueReusableCell(withIdentifier: "FeedUserCell", for: indexPath) as! FeedUserCell)
+        delegate.didStartLoadingCell()
         return cell!
     }
     
-    private func binded(_ cell: FeedUserCell) -> UITableViewCell {
-        cell.emailLabel.text = viewModel.email
-        cell.firstNameLabel.text = viewModel.firstName
-        cell.lastNameLabel.text = viewModel.lastName
-        cell.userImageView.image = nil
-        viewModel.onImageData = {[weak cell] image in
-            cell?.userImageView.image = image
-        }
-        return cell
+    func display(_ viewModel: ImageCellViewModel<UIImage>) {
+        cell?.emailLabel.text = viewModel.email
+        cell?.firstNameLabel.text = viewModel.firstName
+        cell?.lastNameLabel.text = viewModel.lastName
+        cell?.userImageView?.image = viewModel.image
     }
     
     deinit {
