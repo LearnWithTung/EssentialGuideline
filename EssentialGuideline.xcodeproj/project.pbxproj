@@ -191,6 +191,12 @@
 		BDA83F9825A6EF1600E9EB18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDA83F9D25A6EF1600E9EB18 /* MVVMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVVMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA83FA425A6EF1600E9EB18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDA83FC925A6EF4B00E9EB18 /* FeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIComposer.swift; sourceTree = "<group>"; };
+		BDA83FCB25A6EF4B00E9EB18 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		BDA83FCC25A6EF4B00E9EB18 /* FeedRefreshController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRefreshController.swift; sourceTree = "<group>"; };
+		BDA83FCD25A6EF4B00E9EB18 /* FeedCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellController.swift; sourceTree = "<group>"; };
+		BDA83FCF25A6EF4B00E9EB18 /* FeedUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUserCell.swift; sourceTree = "<group>"; };
+		BDA83FD025A6EF4B00E9EB18 /* FeedUserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedUserCell.xib; sourceTree = "<group>"; };
 		BFFDDFA21FD1AE442A0B80F2 /* Pods_EssentialiOSApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EssentialiOSApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C121AD836EC594E310C63ADA /* Pods-EssentialiOSApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EssentialiOSApp.release.xcconfig"; path = "Target Support Files/Pods-EssentialiOSApp/Pods-EssentialiOSApp.release.xcconfig"; sourceTree = "<group>"; };
 		ECCBDBD94A7C34169972FA8F /* Pods_EssentialGuidelineiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EssentialGuidelineiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -455,6 +461,9 @@
 		BDA83F9625A6EF1600E9EB18 /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				BDA83FC825A6EF4B00E9EB18 /* Composers */,
+				BDA83FCE25A6EF4B00E9EB18 /* Views */,
+				BDA83FCA25A6EF4B00E9EB18 /* Controllers */,
 				BDA83F9825A6EF1600E9EB18 /* Info.plist */,
 			);
 			path = MVVM;
@@ -466,6 +475,33 @@
 				BDA83FA425A6EF1600E9EB18 /* Info.plist */,
 			);
 			path = MVVMTests;
+			sourceTree = "<group>";
+		};
+		BDA83FC825A6EF4B00E9EB18 /* Composers */ = {
+			isa = PBXGroup;
+			children = (
+				BDA83FC925A6EF4B00E9EB18 /* FeedUIComposer.swift */,
+			);
+			path = Composers;
+			sourceTree = "<group>";
+		};
+		BDA83FCA25A6EF4B00E9EB18 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BDA83FCB25A6EF4B00E9EB18 /* FeedViewController.swift */,
+				BDA83FCC25A6EF4B00E9EB18 /* FeedRefreshController.swift */,
+				BDA83FCD25A6EF4B00E9EB18 /* FeedCellController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BDA83FCE25A6EF4B00E9EB18 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BDA83FCF25A6EF4B00E9EB18 /* FeedUserCell.swift */,
+				BDA83FD025A6EF4B00E9EB18 /* FeedUserCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
