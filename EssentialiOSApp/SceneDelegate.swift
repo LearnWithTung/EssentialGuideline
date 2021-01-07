@@ -11,6 +11,7 @@ import SDWebImage
 import MVC
 import EssentialGuidelineiOS
 import MVVM
+import MVP
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -33,7 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func makeRootViewController() -> UIViewController {
         let tabBar = UITabBarController()
-        tabBar.viewControllers = [mvvm(), mvc(), massive()]
+        tabBar.viewControllers = [mvp(), mvvm(), mvc(), massive()]
         return tabBar
     }
     
@@ -52,6 +53,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func mvvm() -> UIViewController {
         let view = MVVM.FeedUIComposer.composeWith(feedLoader: feedLoader, imageLoader: feedImageLoader)
         view.tabBarItem.title = "MVVM"
+        return view
+    }
+    
+    private func mvp() -> UIViewController {
+        let view = MVP.FeedUIComposer.composeWith(feedLoader: feedLoader, imageLoader: feedImageLoader)
+        view.tabBarItem.title = "MVP"
         return view
     }
 

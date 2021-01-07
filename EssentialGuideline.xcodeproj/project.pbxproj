@@ -68,6 +68,10 @@
 		BDA840D425A71B7000E9EB18 /* FeedCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA840D325A71B7000E9EB18 /* FeedCellPresenter.swift */; };
 		BDA840DF25A75BCA00E9EB18 /* FeedViewApter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA840DE25A75BCA00E9EB18 /* FeedViewApter.swift */; };
 		BDA840EA25A75BF500E9EB18 /* FeedCellPresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA840E925A75BF500E9EB18 /* FeedCellPresentationAdapter.swift */; };
+		BDA840F425A75C5800E9EB18 /* MVP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA8403725A7108900E9EB18 /* MVP.framework */; };
+		BDA840F525A75C5800E9EB18 /* MVP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BDA8403725A7108900E9EB18 /* MVP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BDA8410125A75C5C00E9EB18 /* MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA83F9525A6EF1600E9EB18 /* MVVM.framework */; };
+		BDA8410225A75C5C00E9EB18 /* MVVM.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BDA83F9525A6EF1600E9EB18 /* MVVM.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +145,20 @@
 			remoteGlobalIDString = BDA8403625A7108900E9EB18;
 			remoteInfo = MVP;
 		};
+		BDA840F625A75C5800E9EB18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD76FB6E25A43F2C00EA8578 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDA8403625A7108900E9EB18;
+			remoteInfo = MVP;
+		};
+		BDA8410325A75C5C00E9EB18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD76FB6E25A43F2C00EA8578 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDA83F9425A6EF1600E9EB18;
+			remoteInfo = MVVM;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -161,9 +179,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				BDA840F525A75C5800E9EB18 /* MVP.framework in Embed Frameworks */,
 				BD76FCAE25A56AFD00EA8578 /* EssentialGuidelineiOS.framework in Embed Frameworks */,
 				BD76FCA925A56AFB00EA8578 /* EssentialFeature.framework in Embed Frameworks */,
 				BD76011925A6B1BF00EA8578 /* MVC.framework in Embed Frameworks */,
+				BDA8410225A75C5C00E9EB18 /* MVVM.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,7 +323,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDA840F425A75C5800E9EB18 /* MVP.framework in Frameworks */,
 				BD76FCAD25A56AFD00EA8578 /* EssentialGuidelineiOS.framework in Frameworks */,
+				BDA8410125A75C5C00E9EB18 /* MVVM.framework in Frameworks */,
 				BD76FCA825A56AFB00EA8578 /* EssentialFeature.framework in Frameworks */,
 				AF6BF777DC675D1B33819DD0 /* Pods_EssentialiOSApp.framework in Frameworks */,
 				BD76011825A6B1BF00EA8578 /* MVC.framework in Frameworks */,
@@ -822,6 +844,8 @@
 				BD76FCAB25A56AFB00EA8578 /* PBXTargetDependency */,
 				BD76FCB025A56AFD00EA8578 /* PBXTargetDependency */,
 				BD76011725A6B1BF00EA8578 /* PBXTargetDependency */,
+				BDA840F725A75C5800E9EB18 /* PBXTargetDependency */,
+				BDA8410425A75C5C00E9EB18 /* PBXTargetDependency */,
 			);
 			name = EssentialiOSApp;
 			productName = EssentialiOSApp;
@@ -1338,6 +1362,16 @@
 			isa = PBXTargetDependency;
 			target = BDA8403625A7108900E9EB18 /* MVP */;
 			targetProxy = BDA8404125A7108900E9EB18 /* PBXContainerItemProxy */;
+		};
+		BDA840F725A75C5800E9EB18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDA8403625A7108900E9EB18 /* MVP */;
+			targetProxy = BDA840F625A75C5800E9EB18 /* PBXContainerItemProxy */;
+		};
+		BDA8410425A75C5C00E9EB18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDA83F9425A6EF1600E9EB18 /* MVVM */;
+			targetProxy = BDA8410325A75C5C00E9EB18 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
