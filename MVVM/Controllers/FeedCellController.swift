@@ -16,10 +16,10 @@ class FeedCellController {
         self.viewModel = viewModel
     }
     
-    func view(_ tableView: UITableView) -> UITableViewCell {
-        cell = tableView.dequeueReusableCell(withIdentifier: "FeedUserCell") as! FeedUserCell
+    func view(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        cell = binded(tableView.dequeueReusableCell(withIdentifier: "FeedUserCell", for: indexPath) as! FeedUserCell)
         viewModel.loadImageData()
-        return binded(cell!)
+        return cell!
     }
     
     private func binded(_ cell: FeedUserCell) -> UITableViewCell {

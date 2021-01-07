@@ -47,6 +47,6 @@ final public class FeedViewController: UITableViewController {
     
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellController = tableModel[indexPath.row]
-        return cellController.view(tableView)
+        return cellController.view(tableView, for: indexPath)
     }
 }
