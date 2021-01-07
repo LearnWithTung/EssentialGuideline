@@ -137,6 +137,11 @@
 		BD76010625A6B1BF00EA8578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD76010B25A6B1BF00EA8578 /* MVCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD76011425A6B1BF00EA8578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD76013425A6B23300EA8578 /* FeedUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUserCell.swift; sourceTree = "<group>"; };
+		BD76013525A6B23300EA8578 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		BD76013625A6B23300EA8578 /* FeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIComposer.swift; sourceTree = "<group>"; };
+		BD76013725A6B23300EA8578 /* FeedUserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedUserCell.xib; sourceTree = "<group>"; };
+		BD76013825A6B23300EA8578 /* FeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoader.swift; sourceTree = "<group>"; };
 		BD76FB7925A43F4900EA8578 /* EssentialFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD76FB7D25A43F4900EA8578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD76FB8225A43F4900EA8578 /* EssentialFeatureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeatureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -249,6 +254,11 @@
 		BD76010425A6B1BF00EA8578 /* MVC */ = {
 			isa = PBXGroup;
 			children = (
+				BD76013525A6B23300EA8578 /* FeedViewController.swift */,
+				BD76013425A6B23300EA8578 /* FeedUserCell.swift */,
+				BD76013725A6B23300EA8578 /* FeedUserCell.xib */,
+				BD76013825A6B23300EA8578 /* FeedImageDataLoader.swift */,
+				BD76013625A6B23300EA8578 /* FeedUIComposer.swift */,
 				BD76010625A6B1BF00EA8578 /* Info.plist */,
 			);
 			path = MVC;
