@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import EssentialFeature
 
 public final class FeedRefreshController: NSObject {
     
@@ -14,12 +13,10 @@ public final class FeedRefreshController: NSObject {
     
     private let viewModel: FeedRefreshViewModel
     
-    public init(feedLoader: FeedLoader) {
-        self.viewModel = FeedRefreshViewModel(feedLoader: feedLoader)
+    public init(viewModel: FeedRefreshViewModel) {
+        self.viewModel = viewModel
     }
     
-    var onFeedLoad: (([FeedItem]) -> Void)?
-
     @objc func refresh() {
         viewModel.load()
     }
@@ -40,10 +37,6 @@ public final class FeedRefreshController: NSObject {
                     refresh()
                 }
             }
-        }
-        
-        viewModel.onFeedLoad = { [weak self] feed in
-            self?.onFeedLoad?(feed)
         }
         
         view.addTarget(self, action: #selector(refresh), for: .valueChanged)

@@ -8,7 +8,7 @@
 import Foundation
 import EssentialFeature
 
-class FeedRefreshViewModel {
+public class FeedRefreshViewModel {
     
     typealias Observer<T> = (T) -> Void
 
