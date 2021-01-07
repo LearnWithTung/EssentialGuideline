@@ -9,6 +9,8 @@ import UIKit
 import EssentialFeature
 
 class FeedRefreshViewModel {
+    
+    typealias Observer<T> = (T) -> Void
 
     private let feedLoader: FeedLoader
 
@@ -16,8 +18,8 @@ class FeedRefreshViewModel {
         self.feedLoader = feedLoader
     }
     
-    var onFeedLoadState: ((Bool) -> Void)?
-    var onFeedLoad: (([FeedItem]) -> Void)?
+    var onFeedLoadState: Observer<Bool>?
+    var onFeedLoad: Observer<[FeedItem]>?
     
     func load() {
         onFeedLoadState?(true)
