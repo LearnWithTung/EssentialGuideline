@@ -38,6 +38,12 @@
 		BD76FCAE25A56AFD00EA8578 /* EssentialGuidelineiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD76FBF325A4C55E00EA8578 /* EssentialGuidelineiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BD76FCB825A56BDB00EA8578 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76FCB725A56BDB00EA8578 /* URLSessionHTTPClient.swift */; };
 		BD76FCCD25A56ED500EA8578 /* FeedUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD76FCCC25A56ED500EA8578 /* FeedUserCell.xib */; };
+		BDA83F4C25A6B77000E9EB18 /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76013825A6B23300EA8578 /* FeedImageDataLoader.swift */; };
+		BDA83F4D25A6B77000E9EB18 /* FeedUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76013425A6B23300EA8578 /* FeedUserCell.swift */; };
+		BDA83F4E25A6B77000E9EB18 /* FeedUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD76013725A6B23300EA8578 /* FeedUserCell.xib */; };
+		BDA83F4F25A6B77000E9EB18 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76013525A6B23300EA8578 /* FeedViewController.swift */; };
+		BDA83F5025A6B77000E9EB18 /* FeedUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76013625A6B23300EA8578 /* FeedUIComposer.swift */; };
+		BDA83F6325A6E18D00E9EB18 /* FeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA83F6225A6E18D00E9EB18 /* FeedViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +176,7 @@
 		BD76FCB725A56BDB00EA8578 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		BD76FCBC25A56DCB00EA8578 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD76FCCC25A56ED500EA8578 /* FeedUserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedUserCell.xib; sourceTree = "<group>"; };
+		BDA83F6225A6E18D00E9EB18 /* FeedViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewControllerTests.swift; sourceTree = "<group>"; };
 		BFFDDFA21FD1AE442A0B80F2 /* Pods_EssentialiOSApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EssentialiOSApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C121AD836EC594E310C63ADA /* Pods-EssentialiOSApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EssentialiOSApp.release.xcconfig"; path = "Target Support Files/Pods-EssentialiOSApp/Pods-EssentialiOSApp.release.xcconfig"; sourceTree = "<group>"; };
 		ECCBDBD94A7C34169972FA8F /* Pods_EssentialGuidelineiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EssentialGuidelineiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -268,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				BD76011425A6B1BF00EA8578 /* Info.plist */,
+				BDA83F6225A6E18D00E9EB18 /* FeedViewControllerTests.swift */,
 			);
 			path = MVCTests;
 			sourceTree = "<group>";
@@ -564,6 +572,7 @@
 					};
 					BD76010A25A6B1BF00EA8578 = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
 						TestTargetID = BD76FC8725A56A6D00EA8578;
 					};
 					BD76FB7825A43F4900EA8578 = {
@@ -616,6 +625,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDA83F4E25A6B77000E9EB18 /* FeedUserCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -774,6 +784,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDA83F4D25A6B77000E9EB18 /* FeedUserCell.swift in Sources */,
+				BDA83F5025A6B77000E9EB18 /* FeedUIComposer.swift in Sources */,
+				BDA83F4F25A6B77000E9EB18 /* FeedViewController.swift in Sources */,
+				BDA83F4C25A6B77000E9EB18 /* FeedImageDataLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -781,6 +795,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDA83F6325A6E18D00E9EB18 /* FeedViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1808,6 +1823,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2A3163E261425065297D2D00 /* Pods-EssentialiOSApp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1882,6 +1898,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C121AD836EC594E310C63ADA /* Pods-EssentialiOSApp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
