@@ -12,6 +12,7 @@ class FeedCellController {
     
     private let imageDataLoader: FeedImageDataLoader
     private let model: FeedItem
+    private var cell: UITableViewCell?
     
     init(imageDataLoader: FeedImageDataLoader, model: FeedItem) {
         self.imageDataLoader = imageDataLoader
@@ -19,7 +20,8 @@ class FeedCellController {
     }
     
     func view(_ tableView: UITableView) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FeedUserCell") as! FeedUserCell
+        let cell: FeedUserCell = tableView.dequeueReusableCell(withIdentifier: "FeedUserCell") as! FeedUserCell
+        self.cell = cell
         cell.emailLabel.text = model.email
         cell.firstNameLabel.text = model.firstName
         cell.lastNameLabel.text = model.lastName
@@ -31,4 +33,11 @@ class FeedCellController {
         return cell
     }
     
+    deinit {
+        dequeueCellForReuse()
+    }
+    
+    private func dequeueCellForReuse(){
+        cell = nil
+    }
 }

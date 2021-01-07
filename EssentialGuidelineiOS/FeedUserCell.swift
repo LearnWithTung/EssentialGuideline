@@ -12,4 +12,11 @@ public final class FeedUserCell: UITableViewCell {
     @IBOutlet public var firstNameLabel: UILabel!
     @IBOutlet public var lastNameLabel: UILabel!
     @IBOutlet public var userImageView: UIImageView!
+    
+    deinit {
+        emailLabel.text = nil
+        firstNameLabel.text = nil
+        lastNameLabel.text = nil
+        userImageView.image = nil
+    }
 }

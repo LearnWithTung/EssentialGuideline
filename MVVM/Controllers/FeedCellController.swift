@@ -10,15 +10,16 @@ import UIKit
 class FeedCellController {
     
     private let viewModel: FeedCellViewModel<UIImage>
+    private var cell: UITableViewCell?
     
     init(viewModel: FeedCellViewModel<UIImage>) {
         self.viewModel = viewModel
     }
     
     func view(_ tableView: UITableView) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FeedUserCell") as! FeedUserCell
+        cell = tableView.dequeueReusableCell(withIdentifier: "FeedUserCell") as! FeedUserCell
         viewModel.loadImageData()
-        return binded(cell)
+        return binded(cell!)
     }
     
     private func binded(_ cell: FeedUserCell) -> UITableViewCell {
@@ -30,6 +31,14 @@ class FeedCellController {
             cell?.userImageView.image = image
         }
         return cell
+    }
+    
+    deinit {
+        dequeueCellForReuse()
+    }
+    
+    private func dequeueCellForReuse(){
+        cell = nil
     }
     
 }
