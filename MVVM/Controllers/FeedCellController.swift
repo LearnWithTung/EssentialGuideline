@@ -52,13 +52,11 @@ class FeedCellController {
     
     func view(_ tableView: UITableView) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedUserCell") as! FeedUserCell
-        bind(cell)
-        
-        return cell
+        viewModel.loadImageData()
+        return binded(cell)
     }
     
-    private func bind(_ cell: FeedUserCell){
-        viewModel.loadImageData()
+    private func binded(_ cell: FeedUserCell) -> UITableViewCell {
         cell.emailLabel.text = viewModel.email
         cell.firstNameLabel.text = viewModel.firstName
         cell.lastNameLabel.text = viewModel.lastName
@@ -66,6 +64,7 @@ class FeedCellController {
         viewModel.onImageData = { image in
             cell.userImageView.image = image
         }
+        return cell
     }
     
 }
