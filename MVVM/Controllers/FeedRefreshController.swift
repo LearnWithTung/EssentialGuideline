@@ -8,31 +8,6 @@
 import UIKit
 import EssentialFeature
 
-class FeedRefreshViewModel {
-    
-    typealias Observer<T> = (T) -> Void
-
-    private let feedLoader: FeedLoader
-
-    public init(feedLoader: FeedLoader) {
-        self.feedLoader = feedLoader
-    }
-    
-    var onFeedLoadState: Observer<Bool>?
-    var onFeedLoad: Observer<[FeedItem]>?
-    
-    func load() {
-        onFeedLoadState?(true)
-        feedLoader.load() {[weak self] result in
-            if let feed = try? result.get() {
-                self?.onFeedLoad?(feed)
-            }
-
-            self?.onFeedLoadState?(false)
-        }
-    }
-}
-
 public final class FeedRefreshController: NSObject {
     
     lazy var view = binded(UIRefreshControl())
