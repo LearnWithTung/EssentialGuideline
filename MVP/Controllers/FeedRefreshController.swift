@@ -21,16 +21,16 @@ public final class FeedRefreshController: NSObject, FeedLoadingView {
         presenter.didStartReloadFeed()
     }
     
-    func display(_ isLoading: Bool) {
+    func display(_ viewModel: FeedLoadingModel) {
         if Thread.isMainThread {
-            if isLoading {
+            if viewModel.isLoading {
                 view.beginRefreshing()
             } else {
                 view.endRefreshing()
             }
         } else {
             DispatchQueue.main.async {[weak self] in
-                if isLoading {
+                if viewModel.isLoading {
                     self?.view.beginRefreshing()
                 } else {
                     self?.view.endRefreshing()
