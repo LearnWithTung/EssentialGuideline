@@ -7,9 +7,10 @@
 
 import UIKit
 import EssentialFeature
+import SDWebImage
 import MVC
 import EssentialGuidelineiOS
-import SDWebImage
+import MVVM
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -32,7 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func makeRootViewController() -> UIViewController {
         let tabBar = UITabBarController()
-        tabBar.viewControllers = [massive(), mvc()]
+        tabBar.viewControllers = [mvvm(), mvc(), massive()]
         return tabBar
     }
     
@@ -45,6 +46,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func mvc() -> UIViewController {
         let view = MVC.FeedUIComposer.composeWith(feedLoader: feedLoader, imageLoader: feedImageLoader)
         view.tabBarItem.title = "MVC"
+        return view
+    }
+    
+    private func mvvm() -> UIViewController {
+        let view = MVVM.FeedUIComposer.composeWith(feedLoader: feedLoader, imageLoader: feedImageLoader)
+        view.tabBarItem.title = "MVVM"
         return view
     }
 

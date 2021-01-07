@@ -25,9 +25,9 @@ class FeedCellController {
         cell.emailLabel.text = viewModel.email
         cell.firstNameLabel.text = viewModel.firstName
         cell.lastNameLabel.text = viewModel.lastName
-        
-        viewModel.onImageData = { image in
-            cell.userImageView.image = image
+        cell.userImageView.image = nil
+        viewModel.onImageData = {[weak cell] image in
+            cell?.userImageView.image = image
         }
         return cell
     }
