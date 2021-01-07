@@ -8,9 +8,43 @@
 import UIKit
 import EssentialFeature
 
+final class FeedRefreshController: NSObject {
+    
+    lazy var view: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return refreshControl
+    }()
+    
+    private let feedLoader: FeedLoader
+    
+    init(feedLoader: FeedLoader) {
+        self.feedLoader = feedLoader
+    }
+    
+    var onFeedLoad: (([FeedItem]) -> Void)?
+
+    @objc func refresh() {
+        view.beginRefreshing()
+        feedLoader.load() {[weak self] result in
+            if let feed = try? result.get() {
+                self?.onFeedLoad?(feed)
+            }
+            
+            if Thread.isMainThread {
+                self?.view.endRefreshing()
+            } else {
+                DispatchQueue.main.async {
+                    self?.view.endRefreshing()
+                }
+            }
+        }
+    }
+}
+
 final public class FeedViewController: UITableViewController {
     
-    private var feedLoader: FeedLoader?
+    private var refreshController: FeedRefreshController?
     private var imageLoader: FeedImageDataLoader?
     private var tableModel = [FeedItem]() {
         didSet {
@@ -26,39 +60,23 @@ final public class FeedViewController: UITableViewController {
         
     public convenience init(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) {
         self.init()
-        
-        self.feedLoader = feedLoader
+        self.refreshController = FeedRefreshController(feedLoader: feedLoader)
         self.imageLoader = imageLoader
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tableView.backgroundColor = .white
-        
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(load), for: .valueChanged)
         
         tableView.register(UINib(nibName: "FeedUserCell",
                                  bundle: Bundle(for: FeedUserCell.self)),
                            forCellReuseIdentifier: "FeedUserCell")
-        load()
-    }
-    
-    @objc func load() {
-        refreshControl?.beginRefreshing()
-        feedLoader?.load() {[weak self] result in
-            if let feed = try? result.get() {
-                self?.tableModel = feed
-            }
-            
-            if Thread.isMainThread {
-                self?.refreshControl?.endRefreshing()
-            } else {
-                DispatchQueue.main.async {
-                    self?.refreshControl?.endRefreshing()
-                }
-            }
+        
+        refreshControl = refreshController?.view
+        refreshController?.refresh()
+        refreshController?.onFeedLoad = { [weak self] feed in
+            self?.tableModel = feed
         }
     }
     

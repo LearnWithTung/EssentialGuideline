@@ -7,7 +7,7 @@
 import XCTest
 import UIKit
 import EssentialFeature
-import EssentialGuidelineiOS
+import MVC
 
 class FeedViewControllerTests: XCTestCase {
     
@@ -221,6 +221,9 @@ private extension FeedViewController {
     }
     
     func feedUserView(at row: Int) -> UITableViewCell? {
+        guard numberOfRenderedFeedUserViews() > row else {
+            return nil
+        }
         let ds = tableView.dataSource
         let index = IndexPath(row: row, section: feedImagesSection)
         return ds?.tableView(tableView, cellForRowAt: index)
