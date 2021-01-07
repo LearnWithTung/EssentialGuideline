@@ -46,8 +46,8 @@ class FeedCellController {
     
     private let viewModel: FeedCellViewModel
     
-    init(imageDataLoader: FeedImageDataLoader, model: FeedItem) {
-        self.viewModel = FeedCellViewModel(imageDataLoader: imageDataLoader, model: model)
+    init(viewModel: FeedCellViewModel) {
+        self.viewModel = viewModel
     }
     
     func view(_ tableView: UITableView) -> UITableViewCell {
