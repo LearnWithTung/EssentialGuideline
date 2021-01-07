@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import EssentialFeature
 
 final public class FeedViewController: UITableViewController {
     
@@ -22,6 +21,10 @@ final public class FeedViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    func display(_ cellControllers: [FeedCellController]) {
+        self.tableModel = cellControllers
     }
         
     public convenience init(refreshController: FeedRefreshController) {

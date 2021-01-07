@@ -65,6 +65,7 @@
 		BDA840A925A710F200E9EB18 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA8407D25A710BD00E9EB18 /* FeedViewController.swift */; };
 		BDA840AA25A710F200E9EB18 /* FeedRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA8407C25A710BD00E9EB18 /* FeedRefreshController.swift */; };
 		BDA840AB25A710F200E9EB18 /* FeedCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA8407B25A710BD00E9EB18 /* FeedCellController.swift */; };
+		BDA840B625A7113900E9EB18 /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA840B525A7113900E9EB18 /* FeedPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -239,6 +240,7 @@
 		BDA8407C25A710BD00E9EB18 /* FeedRefreshController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRefreshController.swift; sourceTree = "<group>"; };
 		BDA8407D25A710BD00E9EB18 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		BDA8407E25A710D600E9EB18 /* FeedViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewControllerTests.swift; sourceTree = "<group>"; };
+		BDA840B525A7113900E9EB18 /* FeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenter.swift; sourceTree = "<group>"; };
 		BFFDDFA21FD1AE442A0B80F2 /* Pods_EssentialiOSApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EssentialiOSApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C121AD836EC594E310C63ADA /* Pods-EssentialiOSApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EssentialiOSApp.release.xcconfig"; path = "Target Support Files/Pods-EssentialiOSApp/Pods-EssentialiOSApp.release.xcconfig"; sourceTree = "<group>"; };
 		ECCBDBD94A7C34169972FA8F /* Pods_EssentialGuidelineiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EssentialGuidelineiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -581,6 +583,7 @@
 			children = (
 				BDA8407825A710BD00E9EB18 /* Composers */,
 				BDA8407525A710BD00E9EB18 /* Views */,
+				BDA840C025A71A2300E9EB18 /* Presenters */,
 				BDA8407225A710BD00E9EB18 /* ViewModel */,
 				BDA8407A25A710BD00E9EB18 /* Controllers */,
 				BDA8403A25A7108900E9EB18 /* Info.plist */,
@@ -631,6 +634,14 @@
 				BDA8407B25A710BD00E9EB18 /* FeedCellController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BDA840C025A71A2300E9EB18 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				BDA840B525A7113900E9EB18 /* FeedPresenter.swift */,
+			);
+			path = Presenters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1250,6 +1261,7 @@
 			files = (
 				BDA8409F25A710F000E9EB18 /* FeedRefreshViewModel.swift in Sources */,
 				BDA8409325A710ED00E9EB18 /* FeedUserCell.swift in Sources */,
+				BDA840B625A7113900E9EB18 /* FeedPresenter.swift in Sources */,
 				BDA840A925A710F200E9EB18 /* FeedViewController.swift in Sources */,
 				BDA8408925A710EA00E9EB18 /* FeedUIComposer.swift in Sources */,
 				BDA8409E25A710F000E9EB18 /* FeedCellViewModel.swift in Sources */,
