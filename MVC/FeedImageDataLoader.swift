@@ -7,10 +7,6 @@
 
 import Foundation
 
-public protocol FeedImageDataLoader {
-    func loadImageData(from url: URL, completion: @escaping (Result<Data, Error>) -> Void)
-}
-
 //public class FeedImageDataLoaderWithSDWebImage : FeedImageDataLoader{
 //    private let manager = SDWebImageManager()
 //    

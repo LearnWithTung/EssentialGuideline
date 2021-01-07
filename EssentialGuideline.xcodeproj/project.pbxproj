@@ -46,6 +46,7 @@
 		BDA83F6325A6E18D00E9EB18 /* FeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA83F6225A6E18D00E9EB18 /* FeedViewControllerTests.swift */; };
 		BDA83F6D25A6E94B00E9EB18 /* FeedRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA83F6C25A6E94B00E9EB18 /* FeedRefreshController.swift */; };
 		BDA83F7925A6EB1600E9EB18 /* FeedCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA83F7825A6EB1600E9EB18 /* FeedCellController.swift */; };
+		BDA83F8025A6EBEE00E9EB18 /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA83F7F25A6EBEE00E9EB18 /* FeedImageDataLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,6 +182,7 @@
 		BDA83F6225A6E18D00E9EB18 /* FeedViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewControllerTests.swift; sourceTree = "<group>"; };
 		BDA83F6C25A6E94B00E9EB18 /* FeedRefreshController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRefreshController.swift; sourceTree = "<group>"; };
 		BDA83F7825A6EB1600E9EB18 /* FeedCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellController.swift; sourceTree = "<group>"; };
+		BDA83F7F25A6EBEE00E9EB18 /* FeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoader.swift; sourceTree = "<group>"; };
 		BFFDDFA21FD1AE442A0B80F2 /* Pods_EssentialiOSApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EssentialiOSApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C121AD836EC594E310C63ADA /* Pods-EssentialiOSApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EssentialiOSApp.release.xcconfig"; path = "Target Support Files/Pods-EssentialiOSApp/Pods-EssentialiOSApp.release.xcconfig"; sourceTree = "<group>"; };
 		ECCBDBD94A7C34169972FA8F /* Pods_EssentialGuidelineiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EssentialGuidelineiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -337,6 +339,7 @@
 			children = (
 				BD76FB9E25A4497E00EA8578 /* FeedItem.swift */,
 				BD76FBA225A44B9100EA8578 /* FeedLoader.swift */,
+				BDA83F7F25A6EBEE00E9EB18 /* FeedImageDataLoader.swift */,
 			);
 			path = "Feed Feature";
 			sourceTree = "<group>";
@@ -839,6 +842,7 @@
 				BD76FC5325A4CF1400EA8578 /* HTTPClient.swift in Sources */,
 				BD76FBEB25A4C2AF00EA8578 /* RemoteFeedItemsMapper.swift in Sources */,
 				BD76FBE525A46D0000EA8578 /* RemoteFeedLoader.swift in Sources */,
+				BDA83F8025A6EBEE00E9EB18 /* FeedImageDataLoader.swift in Sources */,
 				BD76FB9F25A4497E00EA8578 /* FeedItem.swift in Sources */,
 				BD76FCB825A56BDB00EA8578 /* URLSessionHTTPClient.swift in Sources */,
 			);
