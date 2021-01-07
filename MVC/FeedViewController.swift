@@ -46,7 +46,7 @@ final public class FeedViewController: UITableViewController {
     
     private var refreshController: FeedRefreshController?
     private var imageLoader: FeedImageDataLoader?
-    private var tableModel = [FeedItem]() {
+    var tableModel = [FeedItem]() {
         didSet {
             if Thread.isMainThread {
                 self.tableView.reloadData()
@@ -75,9 +75,6 @@ final public class FeedViewController: UITableViewController {
         
         refreshControl = refreshController?.view
         refreshController?.refresh()
-        refreshController?.onFeedLoad = { [weak self] feed in
-            self?.tableModel = feed
-        }
     }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

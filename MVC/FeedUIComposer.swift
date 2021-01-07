@@ -13,7 +13,11 @@ public final class FeedUIComposer {
     
     public static func composeWith(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) -> FeedViewController {
         let refreshController = FeedRefreshController(feedLoader: feedLoader)
-        return FeedViewController(refreshController: refreshController, imageLoader: imageLoader)
+        let feedController =  FeedViewController(refreshController: refreshController, imageLoader: imageLoader)
+        refreshController.onFeedLoad = { [weak feedController] feed in
+            feedController?.tableModel = feed
+        }
+        return feedController
     }
 
 }
