@@ -8,7 +8,7 @@
 import UIKit
 import EssentialFeature
 
-final class FeedRefreshController: NSObject {
+public final class FeedRefreshController: NSObject {
     
     lazy var view: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -18,7 +18,7 @@ final class FeedRefreshController: NSObject {
     
     private let feedLoader: FeedLoader
     
-    init(feedLoader: FeedLoader) {
+    public init(feedLoader: FeedLoader) {
         self.feedLoader = feedLoader
     }
     
@@ -58,9 +58,9 @@ final public class FeedViewController: UITableViewController {
         }
     }
         
-    public convenience init(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) {
+    public convenience init(refreshController: FeedRefreshController, imageLoader: FeedImageDataLoader) {
         self.init()
-        self.refreshController = FeedRefreshController(feedLoader: feedLoader)
+        self.refreshController = refreshController
         self.imageLoader = imageLoader
     }
     
