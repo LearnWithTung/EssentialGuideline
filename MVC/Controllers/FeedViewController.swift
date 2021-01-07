@@ -8,11 +8,36 @@
 import UIKit
 import EssentialFeature
 
+class FeedCellController {
+    
+    private let imageDataLoader: FeedImageDataLoader
+    private let model: FeedItem
+    
+    init(imageDataLoader: FeedImageDataLoader, model: FeedItem) {
+        self.imageDataLoader = imageDataLoader
+        self.model = model
+    }
+    
+    func view(_ tableView: UITableView) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FeedUserCell") as! FeedUserCell
+        cell.emailLabel.text = model.email
+        cell.firstNameLabel.text = model.firstName
+        cell.lastNameLabel.text = model.lastName
+        cell.userImageView.image = nil
+        imageDataLoader.loadImageData(from: model.url) { result in
+            let data = try? result.get()
+            cell.userImageView.image = data.map(UIImage.init) ?? nil
+        }
+        return cell
+    }
+    
+}
+
 final public class FeedViewController: UITableViewController {
     
     private var refreshController: FeedRefreshController?
-    private var imageLoader: FeedImageDataLoader?
-    var tableModel = [FeedItem]() {
+    
+    var tableModel = [FeedCellController]() {
         didSet {
             if Thread.isMainThread {
                 self.tableView.reloadData()
@@ -24,15 +49,13 @@ final public class FeedViewController: UITableViewController {
         }
     }
         
-    public convenience init(refreshController: FeedRefreshController, imageLoader: FeedImageDataLoader) {
+    public convenience init(refreshController: FeedRefreshController) {
         self.init()
         self.refreshController = refreshController
-        self.imageLoader = imageLoader
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-
         tableView.backgroundColor = .white
         
         tableView.register(UINib(nibName: "FeedUserCell",
@@ -48,16 +71,7 @@ final public class FeedViewController: UITableViewController {
     }
     
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellModel = tableModel[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FeedUserCell", for: indexPath) as! FeedUserCell
-        cell.emailLabel.text = cellModel.email
-        cell.firstNameLabel.text = cellModel.firstName
-        cell.lastNameLabel.text = cellModel.lastName
-        cell.userImageView.image = nil
-        imageLoader?.loadImageData(from: cellModel.url) { result in
-            let data = try? result.get()
-            cell.userImageView.image = data.map(UIImage.init) ?? nil
-        }
-        return cell
+        let cellController = tableModel[indexPath.row]
+        return cellController.view(tableView)
     }
 }
