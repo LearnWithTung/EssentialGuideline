@@ -8,6 +8,7 @@
 import UIKit
 import EssentialFeature
 import EssentialGuidelineiOS
+import SDWebImage
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -29,6 +30,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = FeedViewController(feedLoader: feedLoader, imageLoader: feedImageLoader)
     }
 
-
 }
 
+class FeedImageDataLoaderWithSDWebImage : FeedImageDataLoader{
+    private let manager = SDWebImageManager()
+
+    public init() {}
+
+    public func loadImageData(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
+        let manger = SDWebImageManager()
+        manger.loadImage(with: url, options: .continueInBackground, progress: nil) { (image, _, error, _, _, _) in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(image?.pngData() ?? Data()))
+            }
+        }
+    }
+}
