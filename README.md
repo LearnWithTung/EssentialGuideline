@@ -118,4 +118,4 @@ GET /users
 ---
 
 #### Architucture
-![MVP Architucture](../Architecture/mvp.png)
+![MVP Architucture](/Architecture/mvp.png)
