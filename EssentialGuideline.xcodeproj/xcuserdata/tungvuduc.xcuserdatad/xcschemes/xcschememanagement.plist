@@ -7,12 +7,12 @@
 		<key>EssentialFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>9</integer>
 		</dict>
 		<key>EssentialGuidelineiOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>7</integer>
 		</dict>
 		<key>EssentialiOSApp.xcscheme_^#shared#^_</key>
 		<dict>
@@ -32,7 +32,7 @@
 		<key>MVVM.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>8</integer>
 		</dict>
 		<key>RemoteEssentialFeatureEndToEndTests.xcscheme_^#shared#^_</key>
 		<dict>
@@ -48,6 +48,16 @@
 			<true/>
 		</dict>
 		<key>BD76010A25A6B1BF00EA8578</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BD76FB7825A43F4900EA8578</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BD76FB8125A43F4900EA8578</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -83,6 +93,11 @@
 			<true/>
 		</dict>
 		<key>BDA8403E25A7108900E9EB18</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BDA8412625A75E8C00E9EB18</key>
 		<dict>
 			<key>primary</key>
 			<true/>
