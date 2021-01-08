@@ -11,7 +11,7 @@
 
 ##### Narrative #1:
 ```
-As on online customer
+As an online customer
 I want the app to automatically load my latest user feed
 So I can see all the users available.
 ```
@@ -24,12 +24,15 @@ Then the app should display the latest user feed
     And replace the cache with the new feed
 ```
 
+
+##### Narrative #1:
 ```
-Given the customer does't have connectivity
-    And there's a cached version of the feed
-When the customer request to see their user feed
-Then the app should display the cached user feed
+As an offline customer
+I want the app to automatically load my cached feed
+So I still can see all the users available when I don't have connectivity.
 ```
+
+##### Scenarios:
 
 ```
 Given the customer does't have connectivity
@@ -37,6 +40,7 @@ Given the customer does't have connectivity
 When the customer request to see their user feed
 Then the app should display the cached user feed
 ```
+
 ```
 Given the customer does't have connectivity
     And the cache is empty
