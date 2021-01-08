@@ -7,17 +7,17 @@
 		<key>EssentialFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>7</integer>
 		</dict>
 		<key>EssentialGuidelineiOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>8</integer>
 		</dict>
 		<key>EssentialiOSApp.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>6</integer>
 		</dict>
 		<key>MVC.xcscheme_^#shared#^_</key>
 		<dict>
@@ -27,12 +27,12 @@
 		<key>MVP.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>5</integer>
 		</dict>
 		<key>MVVM.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>9</integer>
 		</dict>
 		<key>RemoteEssentialFeatureEndToEndTests.xcscheme_^#shared#^_</key>
 		<dict>
@@ -43,6 +43,46 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>BD76010225A6B1BF00EA8578</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BD76010A25A6B1BF00EA8578</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BD76FBF225A4C55E00EA8578</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BD76FBFA25A4C55F00EA8578</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BD76FC8725A56A6D00EA8578</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BDA83F9425A6EF1600E9EB18</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BDA83F9C25A6EF1600E9EB18</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BDA8403625A7108900E9EB18</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BDA8403E25A7108900E9EB18</key>
 		<dict>
 			<key>primary</key>
 			<true/>
